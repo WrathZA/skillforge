@@ -4,7 +4,18 @@
       "Read(//home/bm/code/**)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Bash(git branch:*)",
+      "Bash(git config:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git reset:*)",
+      "Bash(cp /home/bm/code/claude-ban/.claude/skills/orca-judge/references/generic-dimensions.md /home/bm/code/skills/bm-judge/references/)",
+      "Bash(cp /home/bm/code/claude-ban/.claude/skills/orca-judge/references/failure-patterns.md /home/bm/code/skills/bm-judge/references/)"
     ]
   }
 }
