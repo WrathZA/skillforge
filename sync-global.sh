@@ -7,6 +7,17 @@ TARGET_DIR="$HOME/.claude/skills"
 
 mkdir -p "$TARGET_DIR"
 
+# Symlink CLAUDE.md
+claude_md="$HOME/.claude/CLAUDE.md"
+if [ -L "$claude_md" ]; then
+  echo "already linked: CLAUDE.md"
+elif [ -e "$claude_md" ]; then
+  echo "skipped CLAUDE.md (exists, not a symlink — move it into the repo manually)"
+else
+  ln -s "$REPO_DIR/CLAUDE.md" "$claude_md"
+  echo "linked: CLAUDE.md"
+fi
+
 for skill_dir in "$REPO_DIR"/*/; do
   skill_name="$(basename "$skill_dir")"
 
