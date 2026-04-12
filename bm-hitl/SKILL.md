@@ -1,6 +1,6 @@
 ---
 name: bm-hitl
-description: Apply a numbered list one item at a time — status board upfront, per-item approve/skip, approve-all mode. Use when stepping through bm-judge findings or any numbered changes. Triggers: apply these, go through each one, apply improvements.
+description: Apply a numbered list one item at a time — status board upfront, per-item approve/skip, approve-all mode, commits after each approved item. Use when stepping through bm-judge findings or any numbered changes. Triggers: apply these, go through each one, apply improvements, commit each change.
 ---
 
 # HITL Loop
