@@ -12,15 +12,13 @@ New skill? ──► bm-create-a-skill ─────────────�
 
 ## Install
 
-Clone and run `sync-global.sh` once. Symlinks everything into `~/.claude/` — safe to re-run.
+Clone the repo and run `sync-global.sh` once. It symlinks every skill directory and `CLAUDE.md` into `~/.claude/`, so editing files here is the same as editing the live skills — no re-run needed.
 
 ```sh
 git clone <repo> ~/code/skills
 cd ~/code/skills
 ./sync-global.sh
 ```
-
-Edits take effect immediately (symlinked).
 
 ## Skills
 
@@ -33,16 +31,6 @@ Edits take effect immediately (symlinked).
 **[bm-update-a-skill](bm-update-a-skill/)** — same quality gate for existing skills. Recaps, elicits changes with a consistency check, applies, judges, installs.
 
 **[bm-skill-recap](bm-skill-recap/)** — reads a skill body independently of its description and flags drift. Run before updating.
-
-## Add a skill
-
-```
-/bm-create-a-skill
-```
-
-Or manually: create `my-skill/SKILL.md` with `name` + `description` frontmatter, then `./sync-global.sh`.
-
-Spec: [agentskills.io/specification](https://agentskills.io/specification)
 
 ## Principles
 
