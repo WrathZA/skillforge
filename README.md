@@ -73,5 +73,5 @@ Key rules:
 
 ## Credits
 
-- **Matt Pocock** — skill design patterns and knowledge externalization philosophy
+- **Matt Pocock** — `write-a-skill`, the original skill authoring skill this collection builds on
 - **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original prompt evaluation skill that `bm-judge` is based on
