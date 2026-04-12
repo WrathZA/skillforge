@@ -117,3 +117,7 @@ Do not add README.md, CHANGELOG.md, or any documentation about the skill itself 
   **Instead:** Run it even if the draft feels good.
   **Why:** Skills that skip self-eval consistently have U1 or U3 gaps that aren't obvious to the author.
 
+- **NEVER manually apply bm-judge findings one-by-one**
+  **Instead:** Invoke `/bm-hitl` on the numbered improvements list bm-judge produced.
+  **Why:** Manual application skips the approval loop, bundles changes without diffs, and defeats the purpose of the numbered improvements format.
+
