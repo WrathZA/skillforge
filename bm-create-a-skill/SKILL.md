@@ -1,6 +1,6 @@
 ---
 name: bm-create-a-skill
-description: Create a new SKILL.md: pattern selection, knowledge delta discipline, bm-judge self-evaluation before install. Prefer over write-a-skill when bm-standard quality is required. Triggers: create/write/build/scaffold a skill, new skill, SKILL.md.
+description: Create a new SKILL.md: pattern selection, knowledge delta discipline, bm-judge self-evaluation before install. Use when creating, writing, building, or scaffolding a skill. Triggers: new skill, SKILL.md, create a skill, write a skill, build a skill.
 ---
 
 # BM Create-a-Skill
