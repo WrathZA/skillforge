@@ -1,5 +1,7 @@
 # Global Preferences
 
+@principles.md
+
 ## Git
 
 - Default branch name is `main` for all repositories.
