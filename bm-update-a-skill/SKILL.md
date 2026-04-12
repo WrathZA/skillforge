@@ -1,6 +1,6 @@
 ---
 name: bm-update-a-skill
-description: Update an existing Claude Code SKILL.md by recapping what it does, eliciting desired changes through a HITL confirmation loop until understood and logically consistent, applying them, then validating with bm-judge + bm-hitl. Use when the user wants to modify, improve, fix, extend, or revise an existing skill. Trigger phrases: "update this skill", "modify this skill", "revise this skill", "change this skill", "improve this skill", "edit this SKILL.md", "update a skill".
+description: Update an existing Claude Code SKILL.md by recapping what it does, detecting description/implementation drift and offering fixes, eliciting desired changes through a HITL confirmation loop until understood and logically consistent, applying them, then validating with bm-judge + bm-hitl. Use when the user wants to modify, improve, fix, extend, or revise an existing skill. Trigger phrases: "update this skill", "modify this skill", "revise this skill", "change this skill", "improve this skill", "edit this SKILL.md", "update a skill".
 ---
 
 # BM Update-a-Skill
@@ -29,9 +29,22 @@ Read the skill completely. Produce a structured recap:
 **References:** [list references/ files, or "none"]
 ```
 
-State the recap to the user. Confirm: "Does this match your understanding? (y/n)"
+**Drift check**: compare the frontmatter `description` field against the actual implementation. If they diverge (description omits key phases, misnames the trigger, or claims behaviour the skill doesn't exhibit), surface the discrepancy:
 
-On `n`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again.
+```
+Drift detected: [what the description says] vs [what the skill actually does]
+(s)uggest fixes / (i)gnore and continue
+```
+
+On `(s)`: produce a corrected description and add it to the Phase 1 change list as item 0 (applied first). On `(i)`: proceed without changing the description.
+
+State the recap to the user. Confirm:
+
+```
+Does this match your understanding? (y)es / (n)o
+```
+
+On `(n)`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again.
 
 ---
 
@@ -41,9 +54,19 @@ On `n`: collect the correction, update the recap, confirm again before proceedin
 
 ### Loop
 
-Elicit changes, paraphrase back with the change summary and consistency check below, loop until user confirms `y`. On `y`: lock the numbered list and proceed to Phase 2.
+Elicit changes, paraphrase back with the change summary and consistency check below, then ask:
 
-If the user adds items after confirming `y`: "You've added new items after confirming — (r)estart Phase 1 with the full revised list, or (p)roceed with what was confirmed?"
+```
+(y)es, confirmed — lock list and proceed / (n)o, revise
+```
+
+On `(y)`: lock the numbered list and proceed to Phase 2.
+
+If the user adds items after confirming `y`:
+
+```
+New items added after confirmation — (r)estart Phase 1 with full revised list / (p)roceed with confirmed list
+```
 
 After each response, produce:
 
@@ -85,7 +108,15 @@ Apply all confirmed changes from the Phase 1 list to the skill file. Show a conc
 - [file]:[lines] — [one-line description]
 ```
 
-If any change affects the skill's structure or pattern type: **MANDATORY — READ [`~/.claude/skills/bm-create-a-skill/references/pattern-selection.md`]** before applying that change. If the file does not exist, apply judgment using the five patterns: Mindset (~50 lines, high freedom, taste/judgment tasks), Navigation (~30 lines, routes to sub-files), Philosophy (~150 lines, internalize-then-express), Process (~200 lines, phased workflow with checkpoints), Tool (~300 lines, low freedom, format-specific precision).
+If any change affects the skill's structure or pattern type, select the correct pattern before applying:
+
+| Pattern | ~Lines | Use when |
+|---------|--------|----------|
+| Mindset | ~50 | Creative tasks requiring taste/judgment; high freedom |
+| Navigation | ~30 | Multiple distinct scenarios routed to sub-files |
+| Philosophy | ~150 | Art/creation requiring originality; internalize-then-express |
+| Process | ~200 | Complex multi-step projects with phased checkpoints |
+| Tool | ~300 | Precise operations on specific formats; low freedom |
 
 If any change affects frontmatter or spec-defined fields (name, description, license, compatibility, metadata, allowed-tools): **MANDATORY — WebFetch `https://agentskills.io/specification`** before applying, to verify the change stays compliant with the live spec.
 
@@ -98,7 +129,13 @@ Invoke `/bm-judge` on the modified skill.
 - Score ≥B (80%+): proceed to Phase 4.
 - Score <B: invoke `/bm-hitl` on the numbered improvements bm-judge produced. After bm-hitl completes, proceed to Phase 4.
 
-If bm-hitl stalls on an item (same rejection after 3 revisions), surface to the user: "Stuck on [item] — accept current state, revise scope, or skip?" Do not loop indefinitely.
+If bm-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
+
+```
+Stuck on [item] — (a)ccept current state / (r)evise scope / (s)kip
+```
+
+Do not loop indefinitely.
 
 ---
 
@@ -107,12 +144,12 @@ If bm-hitl stalls on an item (same rejection after 3 revisions), surface to the 
 Show changed sections only (not the full file). Ask:
 
 ```
-(a)pprove and save, (r)evise, (s)kip save?
+(a)pprove and save / (r)evise / (s)kip save
 ```
 
-On `r`: return to Phase 1 with the user's revision request.
+On `(r)`: return to Phase 1 with the user's revision request.
 
-On `a`: write the file to `~/.claude/skills/<name>/SKILL.md`. Changes are immediately active.
+On `(a)`: write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/sync-global.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
 
 ---
 
