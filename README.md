@@ -33,4 +33,15 @@ Then install any skill:
 ## Skills
 
 <!-- skills-list-start -->
+| Skill | Description |
+|-------|-------------|
+| [bm-judge](bm-judge/) | Evaluate any LLM-consumed prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) against quality dimensions. Percentage-based, grouped scoring. |
+| [bm-hitl](bm-hitl/) | Step through a numbered improvements list one item at a time with per-item approval, skip, and accept-all modes. |
 <!-- skills-list-end -->
+
+## Credits
+
+Inspired by and built on the work of:
+
+- **Matt Pocock** — skill design patterns and knowledge externalization philosophy
+

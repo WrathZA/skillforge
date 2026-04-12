@@ -1,179 +1,209 @@
 ---
 name: bm-judge
-description: Evaluate Agent Skill design quality against official specifications and best practices. Use when reviewing, auditing, or improving SKILL.md files and skill packages. Provides multi-dimensional scoring (120 points across 8 dimensions) and actionable improvement suggestions in a numbered findings list. Trigger phrases: "review this skill", "judge this skill", "audit this skill", "score this skill", "evaluate this SKILL.md".
+description: Evaluate the quality of any LLM-consumed prompt against official specifications and best practices. Use when reviewing, auditing, or improving SKILL.md files, CLAUDE.md files, system prompts, bash/shell guidance, or any prompt that governs LLM behavior. Provides grouped dimensional scoring (percentage-based, extensible) and a numbered findings list compatible with bm-hitl. Trigger phrases: "review this skill", "judge this skill", "audit this skill", "score this skill", "evaluate this SKILL.md", "evaluate this CLAUDE.md", "review this prompt", "judge this prompt", "evaluate this prompt".
 ---
 
 # BM Judge
 
-Evaluate Agent Skills against official specifications and patterns, focused on knowledge delta, structure, and practical usability.
+Evaluate any LLM-consumed prompt against quality standards, focused on knowledge delta, instruction clarity, and practical usability.
 
 ---
 
 ## Core Philosophy
 
-### What is a Skill?
+### What is a Prompt?
 
-A Skill is NOT a tutorial. A Skill is a **knowledge externalization mechanism**.
+Any text consumed by an LLM to modify its behavior. Includes:
 
-Traditional AI knowledge is locked in model parameters. To teach new capabilities:
-```
-Traditional: Collect data → GPU cluster → Train → Deploy new version
-Cost: $10,000 - $1,000,000+
-Timeline: Weeks to months
-```
+- **Skills** (SKILL.md): Hot-swap domain expertise
+- **CLAUDE.md / System prompts**: Behavioral framing, constraints, workflow rules
+- **Bash/Shell guidance**: Environment-specific anti-patterns and constraints
 
-Skills change this:
-```
-Skill: Edit SKILL.md → Save → Takes effect on next invocation
-Cost: $0
-Timeline: Instant
-```
+> **Good Prompt = Expert-only Knowledge − What Claude Already Knows**
 
-This is the paradigm shift from "training AI" to "educating AI" — like a hot-swappable LoRA adapter that requires no training. You edit a Markdown file in natural language, and the model's behavior changes.
+Restating defaults is token waste.
 
-### The Core Formula
-
-> **Good Skill = Expert-only Knowledge − What Claude Already Knows**
-
-A Skill's value is measured by its **knowledge delta** — the gap between what it provides and what the model already knows.
-
-- **Expert-only knowledge**: Decision trees, trade-offs, edge cases, anti-patterns, domain-specific thinking frameworks
-- **What Claude already knows**: Basic concepts, standard library usage, common programming patterns, general best practices
-
-When a Skill explains "what is PDF" or "how to write a for-loop", it's compressing knowledge Claude already has. This is **token waste**.
-
-### Tool vs Skill
-
-| Concept | Essence | Function | Example |
-|---------|---------|----------|---------|
-| **Tool** | What model CAN do | Execute actions | bash, read_file, write_file, WebSearch |
-| **Skill** | What model KNOWS how to do | Guide decisions | PDF processing, MCP building, frontend design |
-
-**The equation**:
-```
-General Agent + Excellent Skill = Domain Expert Agent
-```
-
-### Three Types of Knowledge in Skills
-
-When evaluating, categorize each section:
+### Three Types of Knowledge
 
 | Type | Definition | Treatment |
 |------|------------|-----------|
-| **Expert** | Claude genuinely doesn't know this | Must keep — this is the Skill's value |
+| **Expert** | Claude genuinely doesn't know this | Must keep — this is the value |
 | **Activation** | Claude knows but may not think of | Keep if brief — serves as reminder |
-| **Redundant** | Claude definitely knows this | Should delete — wastes tokens |
+| **Redundant** | Claude definitely knows this | Delete — wastes tokens |
 
----
+Good prompt: >70% Expert, <20% Activation, <10% Redundant.
 
-## Evaluation Dimensions (120 points total)
 
-**MANDATORY — READ [`references/generic-dimensions.md`](references/generic-dimensions.md)** before scoring D1–D8. That file contains the full scoring rubrics, examples, and criteria for each dimension.
+## Evaluation Dimensions
 
-| Dimension | Max | What it measures |
-|-----------|-----|------------------|
-| D1: Knowledge Delta | 20 | Does the Skill add genuine expert knowledge? |
-| D2: Mindset + Procedures | 15 | Expert thinking patterns + domain-specific workflows |
-| D3: Anti-Pattern Quality | 15 | Effective NEVER lists with WHY |
-| D4: Specification Compliance | 15 | Frontmatter validity, description quality (WHAT/WHEN/KEYWORDS) |
-| D5: Progressive Disclosure | 15 | Content layering, loading triggers, line count |
-| D6: Freedom Calibration | 15 | Specificity matched to task fragility |
-| D7: Pattern Recognition | 10 | Follows an established skill design pattern |
-| D8: Practical Usability | 15 | Decision trees, actionability, edge case coverage |
+Dimensions are grouped. Universal dimensions always apply. Type-specific modules apply based on what the prompt is. Multiple groups can apply to a single prompt.
+
+**Final grade = total score / total applicable points (as %)**
+
+| Grade | % | Meaning |
+|-------|---|---------|
+| A | 90%+ | Excellent — production-ready |
+| B | 80–89% | Good — minor improvements needed |
+| C | 70–79% | Adequate — clear improvement path |
+| D | 60–69% | Below average — significant issues |
+| F | <60% | Poor — needs fundamental redesign |
+
+### Group U: Universal (80 pts) — always scored
+
+**MANDATORY — READ [`references/universal-dimensions.md`](references/universal-dimensions.md)**
+
+| ID | Dimension | Pts |
+|----|-----------|-----|
+| U1 | Knowledge/Instruction Delta | 20 |
+| U2 | Mindset + Procedures | 15 |
+| U3 | Anti-Pattern Quality | 15 |
+| U4 | Freedom Calibration | 15 |
+| U5 | Practical Usability | 15 |
+
+### Group S: Skill Module (40 pts) — SKILL.md targets only
+
+**MANDATORY — READ [`references/skill-dimensions.md`](references/skill-dimensions.md)**
+
+| ID | Dimension | Pts |
+|----|-----------|-----|
+| S1 | Specification Compliance | 15 |
+| S2 | Progressive Disclosure | 15 |
+| S3 | Pattern Recognition | 10 |
+
+### Group C: CLAUDE.md / System Prompt Module (40 pts) — prompts that govern LLM behavior settings
+
+**MANDATORY — READ [`references/claude-md-dimensions.md`](references/claude-md-dimensions.md)**
+
+| ID | Dimension | Pts |
+|----|-----------|-----|
+| C1 | Behavioral Clarity | 15 |
+| C2 | Scope Definition | 15 |
+| C3 | Structural Organization | 10 |
+
+### Group B: Bash/Shell Module (30 pts) — prompts that contain shell/CLI guidance
+
+**MANDATORY — READ [`references/bash-dimensions.md`](references/bash-dimensions.md)**
+
+| ID | Dimension | Pts |
+|----|-----------|-----|
+| B1 | Rule Specificity & WHY | 10 |
+| B2 | Anti-Pattern Coverage | 10 |
+| B3 | Scope & Exceptions | 10 |
 
 ---
 
 ## Evaluation Protocol
 
+### Step 0: Detect Prompt Type
+
+Read the target and identify which groups apply:
+
+```
+[ ] Is it a SKILL.md file?              → Score U + S. Do NOT load claude-md-dimensions.md or bash-dimensions.md.
+[ ] Is it a CLAUDE.md / system prompt?  → Score U + C. Do NOT load skill-dimensions.md.
+[ ] Does it contain bash/shell rules?   → Also score B. Load bash-dimensions.md.
+[ ] Is it something else?               → Score U only. Do NOT load any type-specific reference.
+```
+
+Multiple groups can apply (e.g. a CLAUDE.md with bash guidance → U + C + B).
+
+**Edge cases**:
+- SKILL.md that also contains bash guidance → U + S + B
+- A referenced sub-file (e.g. `references/bash.md`, not a root prompt) → U only; note "sub-file, not root prompt" in report
+- Ambiguous type (could be CLAUDE.md or skill) → score both C and S groups; note the ambiguity in the Summary
+
 ### Step 1: First Pass — Knowledge Delta Scan
 
-Read SKILL.md completely and for each section ask:
+Read completely. For each section ask:
 > "Does Claude already know this?"
 
-Mark each section as:
-- **[E] Expert**: Claude genuinely doesn't know this — value-add
-- **[A] Activation**: Claude knows but brief reminder is useful — acceptable
-- **[R] Redundant**: Claude definitely knows this — should be deleted
+Mark each section: **[E] Expert** | **[A] Activation** | **[R] Redundant**
 
-Calculate rough ratio: E:A:R
-- Good Skill: >70% Expert, <20% Activation, <10% Redundant
-- Mediocre Skill: 40-70% Expert, high Activation
-- Bad Skill: <40% Expert, high Redundant
+Calculate ratio E:A:R. Target: >70% Expert.
 
 ### Step 2: Structure Analysis
 
 ```
-[ ] Check frontmatter validity
-[ ] Count total lines in SKILL.md
-[ ] List all reference files and their sizes
-[ ] Identify which pattern the Skill follows
-[ ] Check for loading triggers (if references exist)
+[ ] Identify prompt type(s) and applicable groups
+[ ] Check structure and length
+[ ] List any reference or auxiliary files
+[ ] Note any loading/trigger mechanisms (Skills only)
 ```
 
-### Step 3: Score Each Dimension
+### Step 3: Score Each Applicable Dimension
 
-**MANDATORY — READ [`references/generic-dimensions.md`](references/generic-dimensions.md)** before scoring.
+**Load the reference file for each applicable group before scoring.**
 
-For each of the 8 dimensions:
+For each dimension:
 1. Find specific evidence (quote relevant lines)
 2. Assign score with one-line justification
 3. Note specific improvements if score < max
 
-### Step 4: Calculate Total & Grade
+### Step 4: Calculate Score & Grade
 
 ```
-Total = D1 + D2 + D3 + D4 + D5 + D6 + D7 + D8
-Max = 120 points
+Total = sum of all applicable dimension scores
+Max   = sum of all applicable dimension maxes
+Grade = Total / Max as percentage → apply grade scale
 ```
-
-**Grade Scale**:
-| Grade | Percentage | Points | Meaning |
-|-------|------------|--------|---------|
-| A | 90%+ | 108+ | Excellent — production-ready expert Skill |
-| B | 80-89% | 96-107 | Good — minor improvements needed |
-| C | 70-79% | 84-95 | Adequate — clear improvement path |
-| D | 60-69% | 72-83 | Below Average — significant issues |
-| F | <60% | <72 | Poor — needs fundamental redesign |
 
 ### Step 5: Generate Report
 
 ```markdown
-# Skill Evaluation Report: [Skill Name]
+# Prompt Evaluation Report: [Name]
 
 ## Summary
-- **Total Score**: X/120 (X%)
+- **Type**: [Skill / CLAUDE.md / System Prompt / Other] + applicable groups
+- **Score**: X / Y (Z%)
 - **Grade**: [A/B/C/D/F]
-- **Pattern**: [Mindset/Navigation/Philosophy/Process/Tool]
 - **Knowledge Ratio**: E:A:R = X:Y:Z
 - **Verdict**: [One sentence assessment]
 
+## Group Scores
+
+| Group | Score | Max | % |
+|-------|-------|-----|---|
+| U: Universal | | 80 | |
+| S: Skill | | 40 | | ← if applicable
+| C: CLAUDE.md | | 40 | | ← if applicable
+| B: Bash/Shell | | 30 | | ← if applicable
+| **Total** | | | |
+
 ## Dimension Scores
 
-| Dimension | Score | Max | Notes |
-|-----------|-------|-----|-------|
-| D1: Knowledge Delta | X | 20 | |
-| D2: Mindset vs Mechanics | X | 15 | |
-| D3: Anti-Pattern Quality | X | 15 | |
-| D4: Specification Compliance | X | 15 | |
-| D5: Progressive Disclosure | X | 15 | |
-| D6: Freedom Calibration | X | 15 | |
-| D7: Pattern Recognition | X | 10 | |
-| D8: Practical Usability | X | 15 | |
+Include only rows for groups detected in Step 0. Omit rows for groups that don't apply.
+
+| ID | Dimension | Score | Max | Notes |
+|----|-----------|-------|-----|-------|
+| U1 | Knowledge/Instruction Delta | | 20 | |
+| U2 | Mindset + Procedures | | 15 | |
+| U3 | Anti-Pattern Quality | | 15 | |
+| U4 | Freedom Calibration | | 15 | |
+| U5 | Practical Usability | | 15 | |
+| S1 | Specification Compliance | | 15 | Group S: SKILL.md only |
+| S2 | Progressive Disclosure | | 15 | Group S: SKILL.md only |
+| S3 | Pattern Recognition | | 10 | Group S: SKILL.md only |
+| C1 | Behavioral Clarity | | 15 | Group C: CLAUDE.md / system prompts only |
+| C2 | Scope Definition | | 15 | Group C: CLAUDE.md / system prompts only |
+| C3 | Structural Organization | | 10 | Group C: CLAUDE.md / system prompts only |
+| B1 | Rule Specificity & WHY | | 10 | Group B: when shell guidance present |
+| B2 | Anti-Pattern Coverage | | 10 | Group B: when shell guidance present |
+| B3 | Scope & Exceptions | | 10 | Group B: when shell guidance present |
 
 ## Critical Issues
-[List must-fix problems that significantly impact the Skill's effectiveness]
+[Must-fix problems that significantly impact effectiveness]
 
 ## Numbered Improvements
 1. [Highest impact improvement with specific guidance]
-2. [Second priority improvement]
+2. [Second priority]
 3. ...
 
-(This list is bm-hitl-compatible — invoke /bm-hitl to step through each item.)
+(bm-hitl-compatible — invoke /bm-hitl to step through each item.)
 
 ## Detailed Analysis
 [For each dimension scoring below 80%, provide:
 - What's missing or problematic
-- Specific examples from the Skill (with line numbers)
+- Specific evidence with line numbers
 - Concrete suggestions for improvement]
 ```
 
@@ -181,7 +211,7 @@ Max = 120 points
 
 ## Common Failure Patterns
 
-**MANDATORY — READ [`references/failure-patterns.md`](references/failure-patterns.md)** for all failure patterns before generating the report.
+**MANDATORY — READ [`references/failure-patterns.md`](references/failure-patterns.md)**
 
 ---
 
@@ -189,41 +219,54 @@ Max = 120 points
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  SKILL EVALUATION QUICK CHECK                                           │
+│  PROMPT EVALUATION QUICK CHECK                                          │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
+│  Universal (all types)                                                  │
 │    [ ] Knowledge delta: no basics, has expert decision trees            │
 │    [ ] Mindset: thinking patterns + domain procedures                   │
 │    [ ] Anti-patterns: specific NEVER list with WHY                      │
-│    [ ] Description: answers WHAT, WHEN, has KEYWORDS                   │
-│    [ ] Progressive disclosure: <500 lines, loading triggers             │
 │    [ ] Freedom: calibrated to task fragility                            │
-│    [ ] Pattern: follows Mindset/Navigation/Philosophy/Process/Tool      │
 │    [ ] Usability: decision trees, actionable, edge cases covered        │
 │                                                                         │
+│  Skills (SKILL.md)                                                      │
+│    [ ] Description: answers WHAT, WHEN, has KEYWORDS                   │
+│    [ ] Progressive disclosure: <500 lines, loading triggers             │
+│    [ ] Pattern: follows Mindset/Navigation/Philosophy/Process/Tool      │
+│                                                                         │
+│  CLAUDE.md / System Prompts                                             │
+│    [ ] Behavioral clarity: unambiguous, non-contradictory               │
+│    [ ] Scope: governs only what needs governing                         │
+│    [ ] Structure: scannable, logically ordered                          │
+│                                                                         │
+│  Bash/Shell Guidance                                                    │
+│    [ ] Rules specific: name commands/patterns, not vague warnings       │
+│    [ ] Anti-patterns cover real failure modes with WHY                  │
+│    [ ] Scope: clear when rules apply, exceptions noted                  │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## The Meta-Question
+## Self-Application
 
-When evaluating any Skill, always return to this fundamental question:
+bm-judge can and should evaluate itself. The criteria must be self-consistent — if bm-judge can't score well against its own rubric, the rubric is wrong.
 
-> **"Would an expert in this domain, looking at this Skill, say:**
-> **'Yes, this captures knowledge that took me years to learn'?"**
+**Applicable groups**: bm-judge is a SKILL.md with no bash guidance → U + S (120 pts max).
 
-If the answer is yes → the Skill has genuine value.
-If the answer is no → it's compressing what Claude already knows.
+**Expected score**: ≥B (80%+, ≥96/120). A score below B indicates the rubric has drifted from its own standards and the lowest-scoring dimensions should be revisited. A score of A (90%+) on self-evaluation is a warning sign — it may mean the criteria were written to fit the evaluator rather than the other way around.
+
+**Known limitation**: self-evaluation can be gamed by writing criteria the evaluator happens to satisfy. When evaluating bm-judge itself, pay extra attention to whether dimensions capture genuine expert knowledge vs. formalizing what any thoughtful evaluator would do anyway.
+
+---
 
 ## NEVER Do When Evaluating
 
-- **NEVER** give high scores just because it "looks professional" or is well-formatted
-- **NEVER** ignore token waste — every redundant paragraph should result in deduction
-- **NEVER** let length impress you — a 43-line Skill can outperform a 500-line Skill
-- **NEVER** skip mentally testing the decision trees — do they actually lead to correct choices?
-- **NEVER** forgive explaining basics with "but it provides helpful context"
-- **NEVER** overlook missing anti-patterns — if there's no NEVER list, that's a significant gap
-- **NEVER** assume all procedures are valuable — distinguish domain-specific from generic
-- **NEVER** undervalue the description field — poor description = skill never gets used
-- **NEVER** put "when to use" info only in the body — Agent only sees description before loading
+- **NEVER** give high scores just because it "looks professional" or is well-formatted — formatting is cheap; rewarding it masks content gaps and trains authors to polish instead of improve
+- **NEVER** ignore token waste — redundant content dilutes expert signal and teaches authors that padding is acceptable; deduct consistently to create the right incentive
+- **NEVER** let length impress you — a 500-line prompt with 80% activation content is worse than a 50-line one with pure expert knowledge; length is effort, not value
+- **NEVER** skip mentally testing decision trees — plausible-looking trees often have unreachable branches or missing cases that only surface when traced
+- **NEVER** forgive explaining basics with "but it provides helpful context" — it sets a precedent that activation content earns tokens; future versions accumulate more
+- **NEVER** overlook missing anti-patterns — absence of a NEVER list usually means the author hasn't hit the failure modes yet, not that they don't exist
+- **NEVER** assume all procedures are valuable — generic procedures (open, edit, save) inflate U2 scores without adding knowledge delta
+- **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality
+- **NEVER** compare percentage scores across evaluations without checking which groups were scored — U+S (120 pts) and U+C+B (150 pts) are different denominators; the percentages are comparable, the raw scores are not
