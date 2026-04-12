@@ -69,8 +69,8 @@ Wait. Do not advance until the user responds. Accept single-key input — `a`, `
 
 - **a** — commit the change, mark `[✓]`, advance
 - **r** — collect guidance, re-apply, show again; repeat until approved. After 3 revisions without approval, surface the stall: "Revised N times — skip and file a separate issue, or keep going?"
-- **s** — mark `[–]`, note the reason if given, advance
-- **o** — mark `[○]`, note why (already done, no longer applies, impossible), advance without committing
+- **s** — mark `[–]`, note the reason if given, advance (`s` = don't want this change)
+- **o** — mark `[○]`, advance without committing (`o` = already done, no longer applies, or impossible)
 - **A** — commit the current change, then apply and commit all remaining items without per-item prompts; mark each `[✓]` as it completes; show the final board when done
 - **k** — mark the current item `[–]`, mark all remaining items `[–]`, show the final board, exit the loop
 - **Q** — mark all remaining items `[–]`, show the final board, exit
