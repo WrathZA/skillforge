@@ -19,7 +19,7 @@
 
 ## New Skills
 
-- [ ] `bm-skill-recap` — a skill that reads a skill's actual body and tells you what it *really* does, not what the description claims. Useful for auditing drift between description and implementation.
+- [x] `bm-skill-recap` — a skill that reads a skill's actual body and tells you what it *really* does, not what the description claims. Useful for auditing drift between description and implementation.
 
 
 
