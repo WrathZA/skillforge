@@ -1,6 +1,6 @@
 ---
 name: bm-create-a-skill
-description: Create a new Claude Code skill with bm-standard structure, knowledge delta discipline, pattern selection, and bm-judge self-evaluation before install. Prefer this over write-a-skill when bm-standard quality is required. Use when the user wants to build, write, scaffold, or create a new skill or SKILL.md. Trigger phrases: "create a skill", "write a skill", "new skill", "build a skill", "scaffold a skill", "bm-create-a-skill".
+description: Create a new Claude Code skill with bm-standard structure, knowledge delta discipline, pattern selection, and bm-judge self-evaluation before install. Prefer this over write-a-skill when bm-standard quality is required. Use when the user wants to build, write, scaffold, or create a new skill or SKILL.md. Trigger phrases: "create a skill", "write a skill", "new skill", "build a skill", "scaffold a skill", "SKILL.md".
 ---
 
 # BM Create-a-Skill
