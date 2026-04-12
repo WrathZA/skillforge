@@ -90,9 +90,9 @@ Wait for explicit approval before installing. On `a`:
 
 1. Create the directory: `/home/bm/code/skills/<name>/`
 2. Write `SKILL.md` and any `references/` files
-3. Remind the user to run `sync-global.sh` to activate (or run it directly if permitted):
+3. Run `sync-global.sh` via Bash to activate:
    ```
-   ./sync-global.sh
+   bash /home/bm/code/skills/sync-global.sh
    ```
 
 Do not add README.md, CHANGELOG.md, or any documentation about the skill itself — only what the agent needs to perform the task.

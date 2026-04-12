@@ -27,7 +27,8 @@
       "Bash(git -C /home/bm/.claude status)",
       "Bash(git:*)",
       "Bash(ls:*)",
-      "Bash(./sync-global.sh:*)"
+      "Bash(./sync-global.sh:*)",
+      "Bash(bash:*)"
     ]
   }
 }

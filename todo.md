@@ -20,7 +20,8 @@
 ## New Skills
 
 - [x] `bm-create-a-skill` — Process pattern; Phase 4 routes to /bm-judge → /bm-hitl; scored 84% B → 6 improvements applied via bm-hitl
-- [ ] `update-a-skill` — skill for improving existing skills (diff-aware, preserves intent)
+- [x] `bm-update-a-skill` — Process pattern; recap → HITL elicitation → apply → bm-judge → bm-hitl; scored 82.5% B
+- [x] `bm-create-a-skill` + `bm-update-a-skill` Phase 5: run `sync-global.sh` automatically on install instead of just reminding the user
 
 ## General
 

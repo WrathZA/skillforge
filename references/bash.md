@@ -47,6 +47,10 @@
   **Instead:** Every selectable option including defaults must have an explicit key (e.g. `(n)one`, `(s)kip`, `(c)ontinue`).
   **Why:** Claude Code CLI cannot submit an empty line.
 
+- **NEVER read skill files via `~/.claude/skills/` paths**
+  **Instead:** Always use `/home/bm/code/skills/` — e.g. `Read /home/bm/code/skills/bm-judge/SKILL.md`.
+  **Why:** `~/.claude/skills/` is a symlink back to the project directory; Claude Code's permission system fires on symlink traversal and prompts the user, interrupting the agent mid-task.
+
 ---
 
 ## Common Patterns
