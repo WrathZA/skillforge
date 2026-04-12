@@ -75,9 +75,15 @@ If the draft scores ≥B, proceed. Do not chase A — self-scoring A is a warnin
 
 ---
 
-## Phase 5 — Install
+## Phase 5 — Review & Install
 
-When the user approves the skill:
+Present the final draft to the user. Ask:
+
+```
+(a)pprove and install, (r)evise, (s)kip install?
+```
+
+Wait for explicit approval before installing. On `a`:
 
 1. Create the directory: `/home/bm/code/skills/<name>/`
 2. Write `SKILL.md` and any `references/` files
