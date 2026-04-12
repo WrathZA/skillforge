@@ -64,6 +64,10 @@ Never filter by importance. Trivial, redundant, or half-formed — append it. Va
   **Instead:** Verbatim capture with minimal readability cleanup.
   **Why:** The raw form is the signal. Rewriting at capture time introduces interpretation drift and changes what future processing sees.
 
+- **NEVER chain the date, pwd, and obsidian calls with `&&` or `;`**
+  **Instead:** Run each as a separate Bash tool call.
+  **Why:** Claude Code's safety check fires on chained commands and interrupts mid-sequence without warning.
+
 - **NEVER use `$()` substitution when building the obsidian CLI command**
   **Instead:** Run `date +%H:%M` and `pwd` as separate Bash calls, read their output, then construct the command string from those values.
   **Why:** Claude Code's permission system prompts on `$()` during execution, interrupting the capture.
