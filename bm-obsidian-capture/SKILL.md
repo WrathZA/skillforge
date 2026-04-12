@@ -1,9 +1,9 @@
 ---
-name: bm-dump
-description: Zero-friction thought capture from any Claude Code session into the Obsidian vault daily note. Explicitly invoked only — never triggered by ambient phrases. Asks once for content if none provided, then appends immediately. Use when the user wants to capture a thought, decision, or observation into the vault. Trigger phrases: "dump this", "capture this", "note this", "save this to the vault", "add this to my notes".
+name: bm-obsidian-capture
+description: Captures a thought, decision, or observation from any Claude Code session into the Obsidian vault daily note. Invoke when the user wants to save something into the vault. Asks once for content if none provided, then appends immediately with timestamp and source project. Works from any working directory. Trigger phrases: "capture this", "save this to the vault", "note this", "add this to my notes".
 ---
 
-# BM Dump
+# BM Obsidian Capture
 
 One job: append what the user gives you to today's daily note. No routing. No tagging. No questions.
 
@@ -19,7 +19,7 @@ Every entry:
 
 - **HH:MM**: Run `date +%H:%M` as a separate Bash call to get current time.
 - **source**: basename of current working directory. Run `pwd` as a separate Bash call; use only the last path component. If CWD is the vault itself (`RemoteVault`), write `vault`.
-- **content**: verbatim dump from the user; light readability cleanup only (typos, punctuation) — no paraphrasing, no structuring.
+- **content**: verbatim from the user; light readability cleanup only (typos, punctuation) — no paraphrasing, no structuring.
 
 ## Append Command
 
@@ -27,11 +27,11 @@ Every entry:
 obsidian daily:append content="### HH:MM — source\n\ncontent" vault=RemoteVault
 ```
 
-Use `\n` for newlines in the content value. Quote values with spaces. If content contains double quotes, escape them as `\"` — or write the content to `/tmp/dump.txt` and append directly to the vault file instead of using the CLI.
+Use `\n` for newlines in the content value. Quote values with spaces. If content contains double quotes, escape them as `\"` — or write the content to `/tmp/capture.txt` and append directly to the vault file instead of using the CLI.
 
 **After running the CLI command:**
 - CLI succeeds → proceed to confirm.
-- CLI errors (Obsidian not running) → run `pwd` to get the current directory. If CWD is the vault root (contains `.obsidian/`), append directly to `./YYYY-MM-DD.md` using the Write or Edit tool. Create the file if it doesn't exist; never overwrite — append only. If CWD is not the vault, note: "Obsidian is not running and I'm not inside the vault — can't write directly. Open Obsidian and retry."
+- CLI errors (Obsidian not running) → run `pwd` to get the current directory. If CWD is the vault root (contains `.obsidian/`), append directly to `./YYYY-MM-DD.md` using the Write or Edit tool. Create the file if it doesn't exist; never overwrite — append only. If CWD is not the vault, surface: "Obsidian is not running and I'm not inside the vault — can't write directly. Open Obsidian and retry."
 
 **Confirm success with one line**:
 ```
@@ -40,17 +40,15 @@ Captured → YYYY-MM-DD.md [HH:MM — source]
 
 ## What to Capture
 
-This skill is only activated by explicit invocation — never by detecting phrases mid-conversation.
-
 When invoked:
-1. If content was passed directly (e.g. `/bm-dump here's my thought`), capture it.
+1. If content was passed directly (e.g. `/bm-obsidian-capture here's my thought`), capture it.
 2. If invoked with no content, ask once: **"What would you like to capture?"** — then capture whatever the user says next verbatim.
 
 Never filter by importance. Trivial, redundant, or half-formed — append it. Value judgment belongs in background processing, not here.
 
 ## NEVER
 
-- **NEVER ask where to route the dump**
+- **NEVER ask where to route the capture**
   **Instead:** Always append to today's daily note, unconditionally.
   **Why:** One routing question at capture time breaks the zero-friction habit. The daily note is the inbox; routing happens in background processing.
 

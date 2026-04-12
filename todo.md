@@ -19,6 +19,10 @@
 
 ## New Skills
 
+- [ ] `bm-skill-recap` — a skill that reads a skill's actual body and tells you what it *really* does, not what the description claims. Useful for auditing drift between description and implementation.
+
+
+
 - [x] `bm-create-a-skill` — Process pattern; Phase 4 routes to /bm-judge → /bm-hitl; scored 84% B → 6 improvements applied via bm-hitl
 - [x] `bm-update-a-skill` — Process pattern; recap → HITL elicitation → apply → bm-judge → bm-hitl; scored 82.5% B
 - [x] `bm-create-a-skill` + `bm-update-a-skill` Phase 5: run `sync-global.sh` automatically on install instead of just reminding the user
