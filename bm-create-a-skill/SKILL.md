@@ -33,6 +33,8 @@ Select one pattern. State your choice and the one-line reason before drafting.
 
 ## Phase 3 — Draft
 
+**MANDATORY — WebFetch `https://agentskills.io/specification`** before writing the description. Use the live spec to verify current frontmatter requirements and description field constraints.
+
 Write the description before the body. Draft the body around what the description promises.
 
 Write to earn tokens. For every paragraph, ask: **"Does Claude already know this?"**
@@ -88,12 +90,8 @@ Present the final draft to the user. Ask:
 
 Wait for explicit approval before installing. On `a`:
 
-1. Create the directory: `/home/bm/code/skills/<name>/`
+1. Create the directory: `~/.claude/skills/<name>/`
 2. Write `SKILL.md` and any `references/` files
-3. Run `sync-global.sh` via Bash to activate:
-   ```
-   bash /home/bm/code/skills/sync-global.sh
-   ```
 
 Do not add README.md, CHANGELOG.md, or any documentation about the skill itself — only what the agent needs to perform the task.
 

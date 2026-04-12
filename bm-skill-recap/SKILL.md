@@ -11,7 +11,7 @@ Audit a skill by reading its actual implementation and reporting what it *really
 
 ## What to Read
 
-Skills live at `/home/bm/code/skills/<name>/SKILL.md`.
+Skills live at `~/.claude/skills/<name>/SKILL.md`.
 
 If the file doesn't exist, report: "Skill not found — check name spelling" and stop. Do not search for alternatives.
 
@@ -69,10 +69,6 @@ An *incomplete* description (missing behaviors) differs from a *wrong* descripti
 ---
 
 ## NEVER
-
-- **NEVER read from `~/.claude/skills/<name>/SKILL.md`**
-  **Instead:** Always use `/home/bm/code/skills/<name>/SKILL.md`
-  **Why:** `~/.claude/skills/` is a symlink; traversal triggers Claude Code's permission system mid-task.
 
 - **NEVER start your "body actually does" summary by paraphrasing the description**
   **Instead:** Read the body first, form an independent summary, then compare to the description.

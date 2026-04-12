@@ -19,6 +19,8 @@ Same Claude model, different Skills loaded, becomes different experts.
 
 ## S1: Specification Compliance — Especially Description (15 points)
 
+**MANDATORY — WebFetch `https://agentskills.io/specification` before scoring this dimension.** Score against the live spec, not baked-in knowledge — requirements may have changed.
+
 Does the Skill follow official format requirements? **Special focus on description quality.**
 
 | Score | Criteria |

@@ -85,7 +85,9 @@ Apply all confirmed changes from the Phase 1 list to the skill file. Show a conc
 - [file]:[lines] — [one-line description]
 ```
 
-If any change affects the skill's structure or pattern type: **MANDATORY — READ [`/home/bm/code/skills/bm-create-a-skill/references/pattern-selection.md`]** before applying that change. If the file does not exist, apply judgment using the five patterns: Mindset (~50 lines, high freedom, taste/judgment tasks), Navigation (~30 lines, routes to sub-files), Philosophy (~150 lines, internalize-then-express), Process (~200 lines, phased workflow with checkpoints), Tool (~300 lines, low freedom, format-specific precision).
+If any change affects the skill's structure or pattern type: **MANDATORY — READ [`~/.claude/skills/bm-create-a-skill/references/pattern-selection.md`]** before applying that change. If the file does not exist, apply judgment using the five patterns: Mindset (~50 lines, high freedom, taste/judgment tasks), Navigation (~30 lines, routes to sub-files), Philosophy (~150 lines, internalize-then-express), Process (~200 lines, phased workflow with checkpoints), Tool (~300 lines, low freedom, format-specific precision).
+
+If any change affects frontmatter or spec-defined fields (name, description, license, compatibility, metadata, allowed-tools): **MANDATORY — WebFetch `https://agentskills.io/specification`** before applying, to verify the change stays compliant with the live spec.
 
 ---
 
@@ -110,7 +112,7 @@ Show changed sections only (not the full file). Ask:
 
 On `r`: return to Phase 1 with the user's revision request.
 
-On `a`: write the file. If the skill is under `/home/bm/code/skills/`, run `sync-global.sh` via Bash to activate: `bash /home/bm/code/skills/sync-global.sh`. If under `/home/bm/.claude/skills/`, changes are immediately active.
+On `a`: write the file to `~/.claude/skills/<name>/SKILL.md`. Changes are immediately active.
 
 ---
 

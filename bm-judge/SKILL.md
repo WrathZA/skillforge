@@ -100,6 +100,7 @@ Read the target and identify which groups apply:
 
 ```
 [ ] Is it a SKILL.md file?              → Score U + S. Do NOT load claude-md-dimensions.md or bash-dimensions.md.
+                                          MANDATORY: WebFetch https://agentskills.io/specification before scoring S1.
 [ ] Is it a CLAUDE.md / system prompt?  → Score U + C. Do NOT load skill-dimensions.md.
 [ ] Does it contain bash/shell rules?   → Also score B. Load bash-dimensions.md.
 [ ] Is it something else?               → Score U only. Do NOT load any type-specific reference.
@@ -151,6 +152,9 @@ Grade = Total / Max as percentage → apply grade scale
 
 ```markdown
 # Prompt Evaluation Report: [Name]
+
+## Executive Summary
+[2–3 sentences. State the overall verdict, one top strength, one top weakness. No scores or tables here — prose only. Written for someone who will read only this section.]
 
 ## Summary
 - **Type**: [Skill / CLAUDE.md / System Prompt / Other] + applicable groups
