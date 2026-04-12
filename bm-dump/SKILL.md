@@ -29,7 +29,9 @@ obsidian daily:append content="### HH:MM — source\n\ncontent" vault=RemoteVaul
 
 Use `\n` for newlines in the content value. Quote values with spaces. If content contains double quotes, escape them as `\"` — or write the content to `/tmp/dump.txt` and append directly to the vault file instead of using the CLI.
 
-**If the CLI errors** (Obsidian not running): append directly to `/home/bm/Documents/RemoteVault/YYYY-MM-DD.md` using the Write or Edit tool. Create the file if it doesn't exist; never overwrite existing content — append only.
+**After running the CLI command:**
+- CLI succeeds → proceed to confirm.
+- CLI errors (Obsidian not running) → run `pwd` to get the current directory. If CWD is the vault root (contains `.obsidian/`), append directly to `./YYYY-MM-DD.md` using the Write or Edit tool. Create the file if it doesn't exist; never overwrite — append only. If CWD is not the vault, note: "Obsidian is not running and I'm not inside the vault — can't write directly. Open Obsidian and retry."
 
 **Confirm success with one line**:
 ```
