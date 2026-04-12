@@ -1,6 +1,6 @@
 ---
 name: bm-dump
-description: Zero-friction thought capture from any Claude Code session into the Obsidian vault daily note. Use when the user says "dump this", "capture this", "save this to vault", "note this", or when valuable content surfaces mid-session that should be preserved. Works from any working directory — vault path is hardcoded. Never asks questions at capture time. Trigger phrases: "dump this", "capture this", "note this", "save this to the vault", "add this to my notes".
+description: Zero-friction thought capture from any Claude Code session into the Obsidian vault daily note. Explicitly invoked only — never triggered by ambient phrases. Asks once for content if none provided, then appends immediately. Use when the user wants to capture a thought, decision, or observation into the vault. Trigger phrases: "dump this", "capture this", "note this", "save this to the vault", "add this to my notes".
 ---
 
 # BM Dump
