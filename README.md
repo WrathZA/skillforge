@@ -2,9 +2,17 @@
 
 Personal Claude Code skill collection — hot-swappable domain expertise for Claude Code sessions.
 
+```
+Existing?  ──► bm-skill-recap ──► bm-update-a-skill ──┐
+                                                       ├──► bm-judge ──► bm-hitl ──► install / save
+New skill? ──► bm-create-a-skill ─────────────────────┘
+```
+
+`bm-judge` and `bm-hitl` also work standalone — judge any prompt, step through any numbered list.
+
 ## Install
 
-Clone the repo and run `sync-global.sh` once. It symlinks all skill directories and `CLAUDE.md` into `~/.claude/` — safe to re-run, skips existing links.
+Clone and run `sync-global.sh` once. Symlinks everything into `~/.claude/` — safe to re-run.
 
 ```sh
 git clone <repo> ~/code/skills
@@ -12,66 +20,35 @@ cd ~/code/skills
 ./sync-global.sh
 ```
 
-Changes to skill files take effect immediately (symlinked). No re-run needed after edits.
+Edits take effect immediately (symlinked).
 
 ## Skills
 
-### [bm-judge](bm-judge/)
+**[bm-judge](bm-judge/)** — scores any LLM-consumed prompt. Handles SKILL.md, CLAUDE.md, system prompts, and bash guidance. Outputs a percentage grade + numbered findings list.
 
-Evaluates any LLM-consumed prompt against quality dimensions. Scores SKILL.md files, CLAUDE.md files, system prompts, and bash/shell guidance using grouped rubrics: Universal (knowledge delta, mindset, anti-patterns, freedom, usability) plus type-specific modules (Skill, CLAUDE.md, Bash). Produces a percentage score, letter grade, and a numbered findings list compatible with bm-hitl.
+**[bm-hitl](bm-hitl/)** — steps through a numbered list one item at a time. Full plan upfront, approve/skip per item, commits after each approval.
 
-### [bm-hitl](bm-hitl/)
+**[bm-create-a-skill](bm-create-a-skill/)** — new skill from scratch: discovery recap loop, pattern selection, draft, bm-judge self-eval, bm-hitl fixes, install.
 
-Steps through a numbered improvement list one item at a time. Shows the full plan as a visual status board upfront, applies each change, then prompts for approval before advancing. Supports approve-all (skip per-item prompts) and stop-all modes. Used automatically by bm-create-a-skill and bm-update-a-skill when bm-judge scores below grade B.
+**[bm-update-a-skill](bm-update-a-skill/)** — same quality gate for existing skills. Recaps, elicits changes with a consistency check, applies, judges, installs.
 
-### [bm-create-a-skill](bm-create-a-skill/)
+**[bm-skill-recap](bm-skill-recap/)** — reads a skill body independently of its description and flags drift. Run before updating.
 
-Creates a new SKILL.md through a phased workflow: discovery questions, pattern selection (Mindset / Navigation / Philosophy / Process / Tool), drafting with knowledge-delta discipline, bm-judge self-evaluation, and bm-hitl to fix findings before install. Skills produced by this workflow target ≥B on bm-judge out of the box.
-
-### [bm-update-a-skill](bm-update-a-skill/)
-
-Updates an existing SKILL.md through the same quality gate. Recaps the skill, checks for drift between the frontmatter description and the actual implementation, runs a HITL change-elicitation loop with a 4-point consistency check per proposed change, applies all confirmed changes together, then runs bm-judge + bm-hitl before final save.
-
-### [bm-skill-recap](bm-skill-recap/)
-
-Audits a skill by reading its body independently of its description, then comparing the two. Reports what the skill actually does, what the description claims, any drift (incomplete vs. wrong), and undeclared behaviors added since the description was last updated. Useful before invoking bm-update-a-skill.
-
-## How they fit together
-
-```
-Existing?  ──► bm-skill-recap ──► bm-update-a-skill ──┐
-                                                       ├──► bm-judge ──► bm-hitl ──► install / save
-New skill? ──► bm-create-a-skill ─────────────────────┘
-```
-
-`bm-judge` and `bm-hitl` are also useful standalone — judge any prompt, step through any numbered findings list.
-
-## Add a new skill
-
-Use the `bm-create-a-skill` skill from within Claude Code:
+## Add a skill
 
 ```
 /bm-create-a-skill
 ```
 
-Or manually:
+Or manually: create `my-skill/SKILL.md` with `name` + `description` frontmatter, then `./sync-global.sh`.
 
-1. Create `my-skill/SKILL.md` with YAML frontmatter (`name`, `description`) and a Markdown body
-2. Run `./sync-global.sh` to link it into `~/.claude/skills/`
-
-See [agentskills.io/specification](https://agentskills.io/specification) for the full SKILL.md format.
+Spec: [agentskills.io/specification](https://agentskills.io/specification)
 
 ## Principles
 
-Governing rules for how this repo is maintained and how skills are built — see [`principles.md`](principles.md).
-
-Key rules:
-- Skills are **knowledge delta**, not tutorials — every line must earn its place
-- All interactive prompts use **single keypress `(x)word` format**
-- Skills must **never depend on files inside another skill's directory**
-- Every NEVER rule needs a **WHY** and an **INSTEAD**
+See [`principles.md`](principles.md). Short version: knowledge delta not tutorials, single-keypress menus, no cross-skill file deps, every NEVER needs WHY + INSTEAD.
 
 ## Credits
 
-- **Matt Pocock** — `write-a-skill`, the original skill authoring skill this collection builds on
-- **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original prompt evaluation skill that `bm-judge` is based on
+- **Matt Pocock** — `write-a-skill`, the original skill this collection builds on
+- **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original eval skill `bm-judge` is based on
