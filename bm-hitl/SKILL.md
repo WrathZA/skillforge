@@ -21,14 +21,6 @@ Check git status before showing the board. If the working directory is not a git
 ℹ No git repo — changes will be applied but not committed.
 ```
 
-If it is a git repo and the current branch is main or master, warn once:
-
-```
-⚠ You're on main. Changes will be committed here. (c)ontinue, (s)top?
-```
-
-Wait for confirmation before proceeding.
-
 Display the full status board upfront so the user can see the whole plan:
 
 ```
