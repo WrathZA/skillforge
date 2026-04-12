@@ -11,15 +11,25 @@ Write skills that score ≥B on bm-judge out of the box. Every section must earn
 
 ## Phase 1 — Discovery
 
-Ask these questions before writing a single line. One message, all at once:
+Build understanding through a running recap. Ask questions to fill gaps; after each exchange, show the current recap:
 
-1. **Domain**: What task or domain does this skill cover?
-2. **Decisions**: What non-obvious decisions does the agent need to make? (These are your knowledge delta candidates.)
-3. **Failure modes**: What goes wrong without this skill? What will the NEVER list cover?
-4. **Audience**: Is the output fragile (one wrong byte breaks it) or creative (multiple valid outputs)? This sets freedom level.
-5. **Size**: Will this need reference files, or is it self-contained?
+```
+## Discovery Recap
 
-Do not proceed until you have answers to 1–3. 4 and 5 can be inferred if not provided.
+**Domain:** [what the skill covers, or "unknown"]
+**Decisions:** [non-obvious choices the agent must make, or "unknown"]
+**Failure modes:** [what breaks without this skill, or "unknown"]
+**Audience:** [fragile/creative output, or "inferred: ..."]
+**Size:** [reference files needed, or "inferred: self-contained"]
+```
+
+Then ask: `(a)ccept / (r)evise / (q)uit`
+
+- `a` — recap is complete; proceed to Phase 2
+- `r` — user adds or corrects; update recap and loop
+- `q` — abort
+
+Do not proceed to Phase 2 until the user accepts the recap. Domain, decisions, and failure modes must be filled before accepting — do not accept a recap with "unknown" in those three fields.
 
 ---
 
@@ -90,7 +100,7 @@ Present the final draft to the user. Ask:
 
 Wait for explicit approval before installing. On `a`:
 
-1. Create the directory: `~/.claude/skills/<name>/`
+1. Create the directory: `/home/bm/code/skills/<name>/`
 2. Write `SKILL.md` and any `references/` files
 
 Do not add README.md, CHANGELOG.md, or any documentation about the skill itself — only what the agent needs to perform the task.
