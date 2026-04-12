@@ -1,6 +1,6 @@
 ---
 name: bm-skill-recap
-description: Reads a skill's SKILL.md body and reports what it *actually* does vs. what the description claims. Use to audit drift between description and implementation, or before updating a skill. Trigger phrases: "recap [skill]", "what does [skill] actually do", "audit [skill] description", "is [skill]'s description accurate", "summarize [skill]".
+description: Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill].
 ---
 
 # BM Skill Recap

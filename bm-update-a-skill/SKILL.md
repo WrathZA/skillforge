@@ -1,6 +1,6 @@
 ---
 name: bm-update-a-skill
-description: Update an existing Claude Code SKILL.md by recapping what it does, detecting description/implementation drift and offering fixes, eliciting desired changes through a HITL confirmation loop until understood and logically consistent, applying them, then validating with bm-judge + bm-hitl. Use when the user wants to modify, improve, fix, extend, or revise an existing skill. Trigger phrases: "update this skill", "modify this skill", "revise this skill", "change this skill", "improve this skill", "edit this SKILL.md", "update a skill".
+description: Update an existing SKILL.md: recap, detect description drift, HITL change elicitation, apply, validate with bm-judge + bm-hitl. Use when modifying, improving, or extending a skill. Triggers: update/modify/revise/change this skill, edit SKILL.md.
 ---
 
 # BM Update-a-Skill
@@ -10,6 +10,12 @@ Understand before touching. Confirm before applying. Judge what you've done.
 ---
 
 ## Phase 0 — Load & Recap
+
+**MANDATORY** — Before reading the skill, fetch current platform docs in parallel:
+- **WebFetch `https://agentskills.io/specification`** — live frontmatter requirements and field constraints
+- **WebFetch `https://code.claude.com/docs/en/skills`** — Claude Code-specific features (new frontmatter fields, description char limits, invocation controls)
+
+Note any constraints or features relevant to the skill being updated. These inform both the recap and the consistency checks in Phase 1.
 
 Identify the target skill. The user may name it, paste a path, or point to it in context.
 
@@ -118,7 +124,7 @@ If any change affects the skill's structure or pattern type, select the correct 
 | Process | ~200 | Complex multi-step projects with phased checkpoints |
 | Tool | ~300 | Precise operations on specific formats; low freedom |
 
-If any change affects frontmatter or spec-defined fields (name, description, license, compatibility, metadata, allowed-tools): **MANDATORY — WebFetch `https://agentskills.io/specification`** before applying, to verify the change stays compliant with the live spec.
+If any change affects frontmatter fields, verify compliance against the spec and Claude Code docs fetched in Phase 0 before applying.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: bm-judge
-description: Evaluate the quality of any LLM-consumed prompt against official specifications and best practices. Use when reviewing, auditing, or improving SKILL.md files, CLAUDE.md files, system prompts, bash/shell guidance, or any prompt that governs LLM behavior. Provides grouped dimensional scoring (percentage-based, extensible) and a numbered findings list compatible with bm-hitl. Trigger phrases: "review this skill", "judge this skill", "audit this skill", "score this skill", "evaluate this SKILL.md", "evaluate this CLAUDE.md", "review this prompt", "judge this prompt", "evaluate this prompt".
+description: Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and bm-hitl-compatible findings list. Triggers: judge/review/audit/score/evaluate this skill or prompt.
 ---
 
 # BM Judge

@@ -1,6 +1,6 @@
 ---
 name: bm-hitl
-description: Iterative HITL loop for applying a numbered list of improvements one at a time — shows the full plan as a visual status board, applies each change, then prompts for approval before advancing. Supports approve-all mode at the status board level — after reviewing the full plan list, the user can skip per-item prompts entirely. Supports skip-all mode (`k`) at the per-item level to exit the loop immediately, leaving remaining items unchanged. Use when given a numbered list of suggested changes (from a code review, analysis, or any findings list) and the user wants to step through them one by one. Trigger phrases: "apply these", "go through each one", "apply improvements", "step through these changes".
+description: Apply a numbered list one item at a time — status board upfront, per-item approve/skip, approve-all mode. Use when stepping through bm-judge findings or any numbered changes. Triggers: apply these, go through each one, apply improvements.
 ---
 
 # HITL Loop
