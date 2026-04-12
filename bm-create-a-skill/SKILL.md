@@ -58,6 +58,7 @@ Vague warnings ("be careful", "avoid errors") are prohibited.
 
 **Progressive disclosure thresholds**:
 - Body > 300 lines → move heavy content to `references/`
+- Any section with a decision tree of 4+ branches → extract to `references/` regardless of total line count
 - Add MANDATORY READ triggers at the exact workflow step that needs it
 - Add "Do NOT load" guidance for files irrelevant to the current scenario
 
