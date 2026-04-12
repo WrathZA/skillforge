@@ -15,7 +15,13 @@ Throw the lasso, pull it tight, move to the next. One change at a time, one appr
 
 Parse the numbered improvement list from context. If there are multiple lists or it's unclear which to apply, ask once before starting — not mid-loop. If the response does not resolve the ambiguity, stop: "Still unclear which list to apply — please re-invoke with the target list quoted directly."
 
-Check the current branch before showing the board. If on main or master, warn once:
+Check git status before showing the board. If the working directory is not a git repo, note this at the top of the board and skip all commit steps:
+
+```
+ℹ No git repo — changes will be applied but not committed.
+```
+
+If it is a git repo and the current branch is main or master, warn once:
 
 ```
 ⚠ You're on main. Changes will be committed here. (c)ontinue, (s)top?
@@ -100,7 +106,7 @@ Done. Applied: N  Skipped: M  Revised then applied: P
 
 ## Commits
 
-Commit after each approved change, before advancing to the next item:
+If in a git repo: commit after each approved change, before advancing to the next item:
 
 ```bash
 git add <changed files>
@@ -108,6 +114,8 @@ git add <changed files>
 ```bash
 git commit -m "<short description of this improvement>"
 ```
+
+If not in a git repo: skip commits entirely. Mark each approved item `[✓]` and continue — do not warn on every item, the single board-level notice is sufficient.
 
 ## NEVER
 

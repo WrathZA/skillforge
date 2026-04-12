@@ -4,15 +4,16 @@ Personal Claude Code skill collection.
 
 ## Install
 
-Add this marketplace once (requires SSH access to the repo):
+**Local (dev):** Clone the repo and run `sync-global.sh` once. It symlinks all skill directories and `CLAUDE.md` into `~/.claude/` — safe to re-run, skips existing links.
+
+```sh
+./sync-global.sh
+```
+
+**Plugin marketplace** (requires SSH access to the repo):
 
 ```sh
 /plugin marketplace add git@github.com:bm/skills.git
-```
-
-Then install any skill:
-
-```sh
 /plugin install skill-name@bm-skills
 ```
 

@@ -50,6 +50,11 @@ Symptom: Great content but skill rarely gets activated
 Root cause: Description is vague, missing keywords, or lacks trigger scenarios
 Fix: Description must answer WHAT, WHEN, and include KEYWORDS
      "Use when..." + specific scenarios + searchable terms
+
+Example fix:
+BAD:  "Helps with document tasks"
+GOOD: "Create, edit, and analyze .docx files. Use when working with
+       Word documents, tracked changes, or professional document formatting."
 ```
 
 ### Pattern 7: The Wrong Location

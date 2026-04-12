@@ -28,6 +28,18 @@
   **Instead:** Use Write, Read, Edit, Bash, Grep, or Glob.
   **Why:** Built-in tools are always available; external dependencies are not.
 
+- **NEVER use `find`, `grep`, `cat`, `head`, `tail` in Bash when a dedicated tool exists**
+  **Instead:** Use Glob (file search), Grep (content search), Read (file contents).
+  **Why:** Dedicated tools provide better UX, correct permissions, and are reviewable by the user.
+
+- **NEVER use interactive git/gh flags (`-i`, `--interactive`)** (e.g. `git rebase -i`, `git add -i`)
+  **Instead:** Use non-interactive equivalents or break the operation into discrete steps.
+  **Why:** Claude Code runs in a non-interactive shell; `-i` flags hang waiting for input that never arrives.
+
+- **NEVER use `--no-verify` on git commands** unless the user explicitly requests it
+  **Instead:** Fix the underlying hook failure — read the error, diagnose the cause, then commit cleanly.
+  **Why:** Bypassing hooks hides real problems (lint failures, test failures, secret detection) and violates trust with the repo's safety net.
+
 - **NEVER use quoted strings as separator output between commands** (e.g. `echo "---"`)
   **Instead:** Use blank lines or plain text output outside of tool calls.
 

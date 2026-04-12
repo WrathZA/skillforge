@@ -247,6 +247,12 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 
 ---
 
+## Extending bm-judge
+
+To add a new evaluation group, **MANDATORY — READ [`references/extending-groups.md`](references/extending-groups.md)** before proposing any new group. Do NOT load this file during a normal evaluation run.
+
+---
+
 ## Self-Application
 
 bm-judge can and should evaluate itself. The criteria must be self-consistent — if bm-judge can't score well against its own rubric, the rubric is wrong.

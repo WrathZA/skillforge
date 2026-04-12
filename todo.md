@@ -6,23 +6,24 @@
 
 ## bm-judge
 
-- [ ] Re-run self-evaluation after HITL session — expect ≥B now
-- [ ] Evaluate user's global `CLAUDE.md` + `bash.md` with bm-judge (first real C+B group evaluation)
-- [ ] Decide fate of `skill-judge` — redundant now that bm-judge covers skills; deprecate or keep as thinner wrapper?
-- [ ] Flesh out C group rubric with real examples once we have CLAUDE.md evaluations to learn from
-- [ ] Define what a new type module needs before adding it (entry criteria for adding Group X)
+- [x] Re-run self-evaluation after HITL session — scored 102/120 (85%, Grade B) ✓
+- [x] Evaluate user's global `CLAUDE.md` + `bash.md` with bm-judge — scored 126/150 (84%, Grade B) ✓
+  - Gaps fixed in bash.md: added find/grep/cat, interactive flags (-i), --no-verify rules
+- [x] Decide fate of `skill-judge` — deprecated; removed symlink from ~/.claude/skills/. Migrated Pattern 6 example to bm-judge failure-patterns.md. Source intact at ~/.agents/skills/skill-judge.
+- [x] Flesh out C group rubric with real examples — first eval: global CLAUDE.md + bash.md scored 84% B; rubric held, no gaps found
+- [x] Define what a new type module needs before adding it — written in bm-judge/references/extending-groups.md; loading trigger added to SKILL.md
 
 ## bm-hitl
 
-- [ ] Handle no-git-repo case gracefully — currently silently skips commits with no warning to user
+- [x] Handle no-git-repo case gracefully — board-level notice + skip commits; no per-item warnings
 
 ## New Skills
 
-- [ ] `create-a-skill` — skill for scaffolding new skills (frontmatter, structure, pattern selection)
+- [x] `bm-create-a-skill` — Process pattern; Phase 4 routes to /bm-judge → /bm-hitl; scored 84% B → 6 improvements applied via bm-hitl
 - [ ] `update-a-skill` — skill for improving existing skills (diff-aware, preserves intent)
 
 ## General
 
-- [ ] `sync-global.sh` — document what it does in README or a comment
-- [ ] Add skills list to README (the `<!-- skills-list -->` markers are there but empty)
-- [ ] Add credits section to README — shout out people these skills are based on, including Matt Pocock
+- [x] `sync-global.sh` — documented in README Install section
+- [x] Add skills list to README — bm-judge and bm-hitl listed
+- [x] Add credits section to README — Matt Pocock credited

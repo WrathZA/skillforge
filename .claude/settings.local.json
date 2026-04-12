@@ -15,7 +15,19 @@
       "Bash(git pull:*)",
       "Bash(git reset:*)",
       "Bash(cp /home/bm/code/claude-ban/.claude/skills/orca-judge/references/generic-dimensions.md /home/bm/code/skills/bm-judge/references/)",
-      "Bash(cp /home/bm/code/claude-ban/.claude/skills/orca-judge/references/failure-patterns.md /home/bm/code/skills/bm-judge/references/)"
+      "Bash(cp /home/bm/code/claude-ban/.claude/skills/orca-judge/references/failure-patterns.md /home/bm/code/skills/bm-judge/references/)",
+      "Bash(chmod +x /home/bm/code/skills/sync-global.sh)",
+      "Bash(mkdir -p /home/bm/code/skills/.git/hooks)",
+      "Bash(cp /home/bm/code/skills/sync-global.sh /home/bm/code/skills/.git/hooks/post-commit)",
+      "Bash(chmod +x /home/bm/code/skills/.git/hooks/post-commit)",
+      "Bash(chmod +x:*)",
+      "Bash(cp ~/.claude/CLAUDE.md /home/bm/code/skills/CLAUDE.md)",
+      "Bash(rm ~/.claude/CLAUDE.md)",
+      "Bash(ln -s /home/bm/code/skills/CLAUDE.md ~/.claude/CLAUDE.md)",
+      "Bash(git -C /home/bm/.claude status)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(./sync-global.sh:*)"
     ]
   }
 }
