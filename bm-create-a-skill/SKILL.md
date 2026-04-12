@@ -33,6 +33,8 @@ Select one pattern. State your choice and the one-line reason before drafting.
 
 ## Phase 3 — Draft
 
+Write the description before the body. Draft the body around what the description promises.
+
 Write to earn tokens. For every paragraph, ask: **"Does Claude already know this?"**
 
 - If yes → delete it
@@ -114,6 +116,3 @@ Do not add README.md, CHANGELOG.md, or any documentation about the skill itself 
   **Instead:** Run it even if the draft feels good.
   **Why:** Skills that skip self-eval consistently have U1 or U3 gaps that aren't obvious to the author.
 
-- **NEVER write the description last**
-  **Instead:** Draft the description first (or second, after pattern selection) — it forces clarity on WHAT and WHEN before you commit words to the body.
-  **Why:** Description written last tends to describe what was written, not what the skill should do. The description is the skill's trigger — poor trigger = skill never activates.
