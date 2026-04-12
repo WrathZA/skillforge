@@ -35,7 +35,7 @@ Do not proceed to Phase 2 until the user accepts the recap. Domain, decisions, a
 
 ## Phase 2 — Pattern Selection
 
-**MANDATORY — READ [`references/pattern-selection.md`](references/pattern-selection.md)** before selecting a pattern.
+**MANDATORY — READ [`references/pattern-selection.md`](references/pattern-selection.md)** before selecting a pattern. Do NOT load this file during Phase 1, Phase 3, or later phases.
 
 Select one pattern. State your choice and the one-line reason before drafting.
 
