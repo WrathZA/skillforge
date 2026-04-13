@@ -43,7 +43,7 @@ Select one pattern. State your choice and the one-line reason before drafting.
 
 ## Phase 3 — Draft
 
-**MANDATORY — WebFetch `https://agentskills.io/specification`** before writing the description. Use the live spec to verify current frontmatter requirements and description field constraints.
+**MANDATORY — WebFetch `https://agentskills.io/specification`** before writing the description. Use the live spec to verify current frontmatter requirements and description field constraints. If unreachable, proceed with the spec knowledge already in context; note it in the draft.
 
 Write the description before the body. Draft the body around what the description promises.
 
