@@ -155,7 +155,7 @@ Show changed sections only (not the full file). Ask:
 
 On `(r)`: return to Phase 1 with the user's revision request.
 
-On `(a)`: write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/sync-global.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
+On `(a)`: write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/symlink-global-skills.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
 
 ---
 

@@ -7,6 +7,6 @@ file_path=$(echo "$input" | jq -r '.tool_input.file_path // empty')
 
 case "$file_path" in
   */SKILL.md)
-    bash "$(dirname "$0")/../../sync-global.sh"
+    bash "$(dirname "$0")/../../symlink-global-skills.sh"
     ;;
 esac
