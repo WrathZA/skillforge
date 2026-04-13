@@ -25,10 +25,10 @@
 
 - [x] `bm-create-a-skill` — Process pattern; Phase 4 routes to /bm-judge → /bm-hitl; scored 84% B → 6 improvements applied via bm-hitl
 - [x] `bm-update-a-skill` — Process pattern; recap → HITL elicitation → apply → bm-judge → bm-hitl; scored 82.5% B
-- [x] `bm-create-a-skill` + `bm-update-a-skill` Phase 5: run `sync-global.sh` automatically on install instead of just reminding the user
+- [x] `bm-create-a-skill` + `bm-update-a-skill` Phase 5: run `symlink-global-skills.sh` automatically on install instead of just reminding the user
 
 ## General
 
-- [x] `sync-global.sh` — documented in README Install section
+- [x] `symlink-global-skills.sh` — documented in README Install section
 - [x] Add skills list to README — bm-judge and bm-hitl listed
 - [x] Add credits section to README — Matt Pocock credited
