@@ -80,7 +80,7 @@ Vague warnings ("be careful", "avoid errors") are prohibited.
 
 ## Phase 4 — Self-Evaluate
 
-Invoke `/skill-forge-judge` on the draft.
+Invoke `/skill-forge-judge` on the draft. (Requires skill-forge-judge to be installed — if missing, ask the user to install it before continuing.)
 
 Target: ≥B (80%+). For a SKILL.md with no bash guidance → U + S (120 pts max) → ≥96 pts.
 
