@@ -10,15 +10,6 @@ New skill? ──► bm-create-a-skill ─────────────�
 
 `bm-judge` and `bm-hitl` also work standalone — judge any prompt, step through any numbered list.
 
-## Install
-
-Clone the repo and run `sync-global.sh` once. It symlinks every skill directory and `CLAUDE.md` into `~/.claude/`, so editing files here is the same as editing the live skills — no re-run needed.
-
-```sh
-git clone <repo> ~/code/skills
-cd ~/code/skills
-./sync-global.sh
-```
 
 ## Skills
 
