@@ -1,27 +1,27 @@
-# bm-skills
+# Skill Forge
 
 Personal Claude Code skill collection — hot-swappable domain expertise for Claude Code sessions.
 
 ```
-Existing?  ──► bm-skill-recap ──► bm-update-a-skill ──┐
-                                                       ├──► bm-judge ──► bm-hitl ──► install / save
-New skill? ──► bm-create-a-skill ─────────────────────┘
+Existing?  ──► skill-forge-recap ──► skill-forge-update ──┐
+                                                                   ├──► skill-forge-judge ──► skill-forge-hitl ──► install / save
+New skill? ──► skill-forge-create ─────────────────────────┘
 ```
 
-`bm-judge` and `bm-hitl` also work standalone — judge any prompt, step through any numbered list.
+`skill-forge-judge` and `skill-forge-hitl` also work standalone — judge any prompt, step through any numbered list.
 
 
 ## Skills
 
-**[bm-judge](bm-judge/)** — scores any LLM-consumed prompt. Handles SKILL.md, CLAUDE.md, system prompts, and bash guidance. Outputs a percentage grade + numbered findings list.
+**[skill-forge-judge](skill-forge-judge/)** — scores any LLM-consumed prompt. Handles SKILL.md, CLAUDE.md, system prompts, and bash guidance. Outputs a percentage grade + numbered findings list.
 
-**[bm-hitl](bm-hitl/)** — steps through a numbered list one item at a time. Full plan upfront, approve/skip per item, commits after each approval.
+**[skill-forge-hitl](skill-forge-hitl/)** — steps through a numbered list one item at a time. Full plan upfront, approve/skip per item, commits after each approval.
 
-**[bm-create-a-skill](bm-create-a-skill/)** — new skill from scratch: discovery recap loop, pattern selection, draft, bm-judge self-eval, bm-hitl fixes, install.
+**[skill-forge-create](skill-forge-create/)** — new skill from scratch: discovery recap loop, pattern selection, draft, skill-forge-judge self-eval, skill-forge-hitl fixes, install.
 
-**[bm-update-a-skill](bm-update-a-skill/)** — same quality gate for existing skills. Recaps, elicits changes with a consistency check, applies, judges, installs.
+**[skill-forge-update](skill-forge-update/)** — same quality gate for existing skills. Recaps, elicits changes with a consistency check, applies, judges, installs.
 
-**[bm-skill-recap](bm-skill-recap/)** — reads a skill body independently of its description and flags drift. Run before updating.
+**[skill-forge-recap](skill-forge-recap/)** — reads a skill body independently of its description and flags drift. Run before updating.
 
 ## Principles
 
@@ -30,4 +30,4 @@ See [`principles.md`](principles.md). Short version: knowledge delta not tutoria
 ## Credits
 
 - **Matt Pocock** — `write-a-skill`, the original skill this collection builds on
-- **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original eval skill `bm-judge` is based on
+- **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original eval skill `skill-forge-judge` is based on

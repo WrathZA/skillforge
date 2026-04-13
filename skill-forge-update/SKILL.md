@@ -1,15 +1,17 @@
 ---
-name: bm-update-a-skill
-description: Update an existing SKILL.md: recap, detect description drift, HITL change elicitation, apply, validate with bm-judge + bm-hitl. Use when modifying, improving, or extending a skill. Triggers: update/modify/revise/change this skill, edit SKILL.md.
+name: skill-forge-update
+description: Update an existing SKILL.md: recap, detect description drift, HITL change elicitation, apply, validate with skill-forge-judge + skill-forge-hitl. Use when modifying, improving, or extending a skill. Triggers: update/modify/revise/change this skill, edit SKILL.md.
 ---
 
-# BM Update-a-Skill
+# Skill Forge Update
 
 Understand before touching. Confirm before applying. Judge what you've done.
 
 ---
 
 ## Phase 0 — Load & Recap
+
+**Skip condition**: If a `/skill-forge-recap` result for the same skill is already in the conversation context, verify the skill name matches, skip Phase 0 entirely, and proceed to Phase 1 using that recap.
 
 **MANDATORY** — Before reading the skill, fetch current platform docs in parallel:
 - **WebFetch `https://agentskills.io/specification`** — live frontmatter requirements and field constraints
@@ -124,18 +126,18 @@ If any change affects the skill's structure or pattern type, select the correct 
 | Process | ~200 | Complex multi-step projects with phased checkpoints |
 | Tool | ~300 | Precise operations on specific formats; low freedom |
 
-If any change affects frontmatter fields, verify compliance against the spec and Claude Code docs fetched in Phase 0 before applying.
+If any change affects frontmatter fields, verify compliance against the spec and Claude Code docs. If Phase 0 was skipped, fetch them now before applying.
 
 ---
 
 ## Phase 3 — Judge & HITL
 
-Invoke `/bm-judge` on the modified skill.
+Invoke `/skill-forge-judge` on the modified skill.
 
 - Score ≥B (80%+): proceed to Phase 4.
-- Score <B: invoke `/bm-hitl` on the numbered improvements bm-judge produced. After bm-hitl completes, proceed to Phase 4.
+- Score <B: invoke `/skill-forge-hitl` on the numbered improvements skill-forge-judge produced. After skill-forge-hitl completes, proceed to Phase 4.
 
-If bm-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
+If skill-forge-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
 
 ```
 Stuck on [item] — (a)ccept current state / (r)evise scope / (s)kip
@@ -163,17 +165,17 @@ On `(a)`: write the file. If the skill is under `/home/bm/code/skills/`, run `ba
 
 - **NEVER apply changes before Phase 1 produces a confirmed change list**
   **Instead:** Run the elicitation loop until the user explicitly responds `y`.
-  **Why:** Applying ambiguous changes produces a result the user didn't want; the subsequent bm-judge then evaluates the wrong output.
+  **Why:** Applying ambiguous changes produces a result the user didn't want; the subsequent skill-forge-judge then evaluates the wrong output.
 
 - **NEVER skip the four-point consistency check on each proposed change**
   **Instead:** Run all four checks every iteration, even for simple-sounding requests.
   **Why:** "Add a NEVER rule" sounds trivial but frequently introduces rule conflicts or violates the three-part format — these only surface under cross-reference.
 
-- **NEVER apply Phase 1 changes one-by-one through bm-hitl**
-  **Instead:** Apply all confirmed Phase 1 changes together in Phase 2; reserve bm-hitl for Phase 3 judge findings.
-  **Why:** bm-hitl is designed for judge-produced findings. Using it for user-confirmed changes conflates two semantically different approval loops and confuses which loop the user is in.
+- **NEVER apply Phase 1 changes one-by-one through skill-forge-hitl**
+  **Instead:** Apply all confirmed Phase 1 changes together in Phase 2; reserve skill-forge-hitl for Phase 3 judge findings.
+  **Why:** skill-forge-hitl is designed for judge-produced findings. Using it for user-confirmed changes conflates two semantically different approval loops and confuses which loop the user is in.
 
-- **NEVER skip Phase 3 (bm-judge) after applying changes**
+- **NEVER skip Phase 3 (skill-forge-judge) after applying changes**
   **Instead:** Always judge the modified skill before presenting for final approval.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
 

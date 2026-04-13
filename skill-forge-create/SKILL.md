@@ -1,11 +1,11 @@
 ---
-name: bm-create-a-skill
-description: Create a new SKILL.md: pattern selection, knowledge delta discipline, bm-judge self-evaluation before install. Use when creating, writing, building, or scaffolding a skill. Triggers: new skill, SKILL.md, create a skill, write a skill, build a skill.
+name: skill-forge-create
+description: Create a new SKILL.md via discovery recap, pattern selection, knowledge delta discipline, skill-forge-judge + skill-forge-hitl before install. Triggers: create a skill, write a skill, new skill, SKILL.md, build a skill.
 ---
 
-# BM Create-a-Skill
+# Skill Forge Create
 
-Write skills that score ≥B on bm-judge out of the box. Every section must earn its tokens.
+Write skills that score ≥B on skill-forge-judge out of the box. Every section must earn its tokens.
 
 ---
 
@@ -78,13 +78,13 @@ Vague warnings ("be careful", "avoid errors") are prohibited.
 
 ## Phase 4 — Self-Evaluate
 
-Invoke `/bm-judge` on the draft.
+Invoke `/skill-forge-judge` on the draft.
 
 Target: ≥B (80%+). For a SKILL.md with no bash guidance → U + S (120 pts max) → ≥96 pts.
 
-If any dimension scores below 80%, invoke `/bm-hitl` on the numbered improvements list bm-judge produced. Do not apply fixes manually — that's /bm-hitl's job.
+If any dimension scores below 80%, invoke `/skill-forge-hitl` on the numbered improvements list skill-forge-judge produced. Do not apply fixes manually — that's /skill-forge-hitl's job.
 
-If the /bm-hitl loop stalls on a dimension (same item rejected after 3 revisions), surface it to the user: "Stuck on [dimension] — here's what I tried. Options: accept the current draft, revise the scope, or skip."
+If the /skill-forge-hitl loop stalls on a dimension (same item rejected after 3 revisions), surface it to the user: "Stuck on [dimension] — here's what I tried. Options: accept the current draft, revise the scope, or skip."
 
 If the draft scores ≥B, proceed. Do not chase A — self-scoring A is a warning sign the criteria were written to fit the skill.
 
@@ -122,11 +122,11 @@ Do not add README.md, CHANGELOG.md, or any documentation about the skill itself 
   **Instead:** Keep body under 300 lines; move detail to `references/` with MANDATORY READ triggers.
   **Why:** A 700-line SKILL.md loads all at once on every invocation — the agent drowns in irrelevant content.
 
-- **NEVER skip Phase 4** (bm-judge self-eval)
+- **NEVER skip Phase 4** (skill-forge-judge self-eval)
   **Instead:** Run it even if the draft feels good.
   **Why:** Skills that skip self-eval consistently have U1 or U3 gaps that aren't obvious to the author.
 
-- **NEVER manually apply bm-judge findings one-by-one**
-  **Instead:** Invoke `/bm-hitl` on the numbered improvements list bm-judge produced.
+- **NEVER manually apply skill-forge-judge findings one-by-one**
+  **Instead:** Invoke `/skill-forge-hitl` on the numbered improvements list skill-forge-judge produced.
   **Why:** Manual application skips the approval loop, bundles changes without diffs, and defeats the purpose of the numbered improvements format.
 

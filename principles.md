@@ -14,7 +14,7 @@ A prohibition without a reason gets forgotten or overridden under pressure. A pr
 - **WHY** — what breaks if you ignore it
 - **INSTEAD** — what to do instead
 
-See `references/bash.md` for examples.
+See the `## Bash` section in `CLAUDE.md` for examples.
 
 ## Skills are knowledge delta, not tutorials
 
@@ -22,11 +22,11 @@ A skill's value = expert knowledge − what Claude already knows. Content that r
 
 ## Evaluation criteria must be self-applicable
 
-Any skill that evaluates other prompts (e.g. `bm-judge`) must be able to evaluate itself and score ≥B. If it can't, the criteria are wrong.
+Any skill that evaluates other prompts (e.g. `skill-forge-judge`) must be able to evaluate itself and score ≥B. If it can't, the criteria are wrong.
 
 ## Skills must never depend on other installed skills
 
-A skill may not reference files inside another skill's directory (e.g. `bm-other-skill/references/foo.md`).
+A skill may not reference files inside another skill's directory (e.g. `skill-forge-other/references/foo.md`).
 
 **WHY:** Skills are installed and removed independently. A cross-skill file reference creates a silent runtime breakage whenever the referenced skill is absent, renamed, or updated — with no error surfaced to the user.
 

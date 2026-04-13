@@ -1,9 +1,9 @@
 ---
-name: bm-skill-recap
+name: skill-forge-recap
 description: Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill].
 ---
 
-# BM Skill Recap
+# Skill Forge Recap
 
 Audit a skill by reading its actual implementation and reporting what it *really* does — independent of what the description claims. The description is a claim; the body is the ground truth.
 

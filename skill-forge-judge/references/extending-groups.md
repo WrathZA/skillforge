@@ -1,4 +1,4 @@
-# Adding New Evaluation Groups to bm-judge
+# Adding New Evaluation Groups to skill-forge-judge
 
 Reference for deciding when and how to add a new type-specific group (e.g., Group D, Group E).
 
@@ -16,7 +16,7 @@ A new group is justified only when ALL of the following are true:
 
 4. **Clear detection**: You can write a single-sentence detection rule for Step 0 (e.g., "Contains bash/shell guidance → B"). If the detection requires judgment calls, the group boundary is not clean enough to ship.
 
-5. **Self-applicable**: The group's dimensions must be evaluatable against the bm-judge SKILL.md itself without contradiction. If adding the group would lower bm-judge's self-eval below B, the criteria are wrong.
+5. **Self-applicable**: The group's dimensions must be evaluatable against the skill-forge-judge SKILL.md itself without contradiction. If adding the group would lower skill-forge-judge's self-eval below B, the criteria are wrong.
 
 ---
 
@@ -27,7 +27,7 @@ A new group is justified only when ALL of the following are true:
 3. Retroactively score the 2–3 existing evaluations with the new group. Verify the scores feel correct — adjust rubric until they do.
 4. Add a reference file: `references/<type>-dimensions.md`
 5. Update SKILL.md: add group to the group table, add detection rule to Step 0, add row to report template.
-6. Run bm-judge self-evaluation. Expected score must remain ≥B.
+6. Run skill-forge-judge self-evaluation. Expected score must remain ≥B.
 
 ---
 

@@ -1,9 +1,9 @@
 ---
-name: bm-judge
-description: Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and bm-hitl-compatible findings list. Triggers: judge/review/audit/score/evaluate this skill or prompt.
+name: skill-forge-judge
+description: Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and skill-forge-hitl-compatible findings list. Triggers: judge/review/audit/score/evaluate this skill or prompt.
 ---
 
-# BM Judge
+# Skill Forge Judge
 
 Evaluate any LLM-consumed prompt against quality standards, focused on knowledge delta, instruction clarity, and practical usability.
 
@@ -202,7 +202,7 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 2. [Second priority]
 3. ...
 
-(bm-hitl-compatible — invoke /bm-hitl to step through each item.)
+(skill-forge-hitl-compatible — invoke /skill-forge-hitl to step through each item.)
 
 ## Detailed Analysis
 [For each dimension scoring below 80%, provide:
@@ -251,7 +251,7 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 
 ---
 
-## Extending bm-judge
+## Extending skill-forge-judge
 
 To add a new evaluation group, **MANDATORY — READ [`references/extending-groups.md`](references/extending-groups.md)** before proposing any new group. Do NOT load this file during a normal evaluation run.
 
@@ -259,13 +259,13 @@ To add a new evaluation group, **MANDATORY — READ [`references/extending-group
 
 ## Self-Application
 
-bm-judge can and should evaluate itself. The criteria must be self-consistent — if bm-judge can't score well against its own rubric, the rubric is wrong.
+skill-forge-judge can and should evaluate itself. The criteria must be self-consistent — if skill-forge-judge can't score well against its own rubric, the rubric is wrong.
 
-**Applicable groups**: bm-judge is a SKILL.md with no bash guidance → U + S (120 pts max).
+**Applicable groups**: skill-forge-judge is a SKILL.md with no bash guidance → U + S (120 pts max).
 
 **Expected score**: ≥B (80%+, ≥96/120). A score below B indicates the rubric has drifted from its own standards and the lowest-scoring dimensions should be revisited. A score of A (90%+) on self-evaluation is a warning sign — it may mean the criteria were written to fit the evaluator rather than the other way around.
 
-**Known limitation**: self-evaluation can be gamed by writing criteria the evaluator happens to satisfy. When evaluating bm-judge itself, pay extra attention to whether dimensions capture genuine expert knowledge vs. formalizing what any thoughtful evaluator would do anyway.
+**Known limitation**: self-evaluation can be gamed by writing criteria the evaluator happens to satisfy. When evaluating skill-forge-judge itself, pay extra attention to whether dimensions capture genuine expert knowledge vs. formalizing what any thoughtful evaluator would do anyway.
 
 ---
 
