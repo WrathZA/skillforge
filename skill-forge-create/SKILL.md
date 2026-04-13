@@ -1,6 +1,6 @@
 ---
 name: skill-forge-create
-description: Create a new SKILL.md via discovery recap, pattern selection, knowledge delta discipline, skill-forge-judge + skill-forge-hitl before install. Triggers: create a skill, write a skill, new skill, SKILL.md, build a skill.
+description: Create a new SKILL.md via discovery recap, pattern selection, WebFetch spec fetch, knowledge delta discipline, skill-forge-judge + skill-forge-hitl quality gate. Triggers: create a skill, write a skill, new skill, SKILL.md, build a skill.
 ---
 
 # Skill Forge Create
@@ -53,6 +53,8 @@ Write to earn tokens. For every paragraph, ask: **"Does Claude already know this
 - If "it's a useful reminder" → one line max, then move on
 - If no → expand it; this is the value
 
+Before writing each section, ask: **"What failure mode does this prevent?"** If you can't answer, you haven't earned the paragraph.
+
 **Description requirements** (THE most critical field):
 - Answers WHAT (what does it do?)
 - Answers WHEN (trigger scenarios — "Use when...", "Trigger phrases:")
@@ -90,24 +92,6 @@ If the draft scores ≥B, proceed. Do not chase A — self-scoring A is a warnin
 
 ---
 
-## Phase 5 — Review & Install
-
-Present the final draft to the user. Ask:
-
-```
-(a)pprove and install, (r)evise, (s)kip install?
-```
-
-Wait for explicit approval before installing. On `a`:
-
-1. Create the directory: `/home/bm/code/skills/<name>/`
-2. Write `SKILL.md` and any `references/` files
-3. Run `bash /home/bm/code/skills/symlink-global-skills.sh` to activate
-
-Do not add README.md, CHANGELOG.md, or any documentation about the skill itself — only what the agent needs to perform the task.
-
----
-
 ## NEVER
 
 - **NEVER write a section that restates Claude defaults** ("write clean code", "handle errors", "be helpful")
@@ -129,4 +113,8 @@ Do not add README.md, CHANGELOG.md, or any documentation about the skill itself 
 - **NEVER manually apply skill-forge-judge findings one-by-one**
   **Instead:** Invoke `/skill-forge-hitl` on the numbered improvements list skill-forge-judge produced.
   **Why:** Manual application skips the approval loop, bundles changes without diffs, and defeats the purpose of the numbered improvements format.
+
+- **NEVER add README.md, CHANGELOG.md, or documentation about the skill itself**
+  **Instead:** Include only what the agent needs to perform the task.
+  **Why:** Meta-documentation about the skill is never loaded during execution — it wastes directory space and signals the wrong mental model (skill as software project, not agent instruction).
 
