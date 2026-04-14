@@ -244,5 +244,5 @@ skill-forge-judge can and should evaluate itself. The criteria must be self-cons
 - **NEVER** forgive explaining basics with "but it provides helpful context" — it sets a precedent that activation content earns tokens; future versions accumulate more
 - **NEVER** overlook missing anti-patterns — absence of a NEVER list usually means the author hasn't hit the failure modes yet, not that they don't exist
 - **NEVER** assume all procedures are valuable — generic procedures (open, edit, save) inflate U2 scores without adding knowledge delta
-- **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality
+- **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality, making all other work invisible
 - **NEVER** compare percentage scores across evaluations without checking which groups were scored — U+S (120 pts) and U+C+B (150 pts) are different denominators; the percentages are comparable, the raw scores are not
