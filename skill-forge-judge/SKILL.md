@@ -100,7 +100,7 @@ Read the target and identify which groups apply:
 
 ```
 [ ] Is it a SKILL.md file?              → Score U + S. Do NOT load claude-md-dimensions.md or bash-dimensions.md.
-                                          MANDATORY: WebFetch https://agentskills.io/specification before scoring S1.
+                                          MANDATORY: Load agentskills spec via Spec Cache (below) before scoring S1.
 [ ] Is it a CLAUDE.md / system prompt?  → Score U + C. Do NOT load skill-dimensions.md.
 [ ] Does it contain bash/shell rules?   → Also score B. Load bash-dimensions.md.
 [ ] Is it something else?               → Score U only. Do NOT load any type-specific reference.
@@ -112,6 +112,24 @@ Multiple groups can apply (e.g. a CLAUDE.md with bash guidance → U + C + B).
 - SKILL.md that also contains bash guidance → U + S + B
 - A referenced sub-file (e.g. `references/bash.md`, not a root prompt) → U only; note "sub-file, not root prompt" in report
 - Ambiguous type (could be CLAUDE.md or skill) → score both C and S groups; note the ambiguity in the Summary
+
+### Spec Cache
+
+The agentskills.io specification is cached daily so evaluations don't pay a network fetch on every run.
+
+```
+Cache dir:  ~/.claude/tmp/
+Filename:   agentskills-spec-YYYY-MM-DD.md   (today's date, e.g. agentskills-spec-2026-04-14.md)
+
+1. Glob ~/.claude/tmp/agentskills-spec-<today>.md
+2. If found  → Read it — done.
+3. If not    → Bash: mkdir -p ~/.claude/tmp
+               WebFetch https://agentskills.io/specification
+               Write result to ~/.claude/tmp/agentskills-spec-<today>.md
+               Read the file — done.
+```
+
+Only fetch when the target is a SKILL.md (S1 scoring). Skip entirely for CLAUDE.md / system prompt / other evaluations.
 
 ### Step 1: First Pass — Knowledge Delta Scan
 
@@ -154,7 +172,7 @@ Grade = Total / Max as percentage → apply grade scale
 # Prompt Evaluation Report: [Name]
 
 ## Executive Summary
-[2–3 sentences. State the overall verdict, one top strength, one top weakness. No scores or tables here — prose only. Written for someone who will read only this section.]
+[1–2 sentences max. Overall verdict + one top strength or weakness. No scores, no tables, no lists — prose only.]
 
 ## Summary
 - **Type**: [Skill / CLAUDE.md / System Prompt / Other] + applicable groups
@@ -179,20 +197,20 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 
 | ID | Dimension | Score | Max | Notes |
 |----|-----------|-------|-----|-------|
-| U1 | Knowledge/Instruction Delta | | 20 | |
-| U2 | Mindset + Procedures | | 15 | |
-| U3 | Anti-Pattern Quality | | 15 | |
-| U4 | Freedom Calibration | | 15 | |
-| U5 | Practical Usability | | 15 | |
-| S1 | Specification Compliance | | 15 | Group S: SKILL.md only |
-| S2 | Progressive Disclosure | | 15 | Group S: SKILL.md only |
-| S3 | Pattern Recognition | | 10 | Group S: SKILL.md only |
-| C1 | Behavioral Clarity | | 15 | Group C: CLAUDE.md / system prompts only |
-| C2 | Scope Definition | | 15 | Group C: CLAUDE.md / system prompts only |
-| C3 | Structural Organization | | 10 | Group C: CLAUDE.md / system prompts only |
-| B1 | Rule Specificity & WHY | | 10 | Group B: when shell guidance present |
-| B2 | Anti-Pattern Coverage | | 10 | Group B: when shell guidance present |
-| B3 | Scope & Exceptions | | 10 | Group B: when shell guidance present |
+| U1 | Knowledge/Instruction Delta | | 20 | One-line justification + primary gap if score < max |
+| U2 | Mindset + Procedures | | 15 | One-line justification + primary gap if score < max |
+| U3 | Anti-Pattern Quality | | 15 | One-line justification + primary gap if score < max |
+| U4 | Freedom Calibration | | 15 | One-line justification + primary gap if score < max |
+| U5 | Practical Usability | | 15 | One-line justification + primary gap if score < max |
+| S1 | Specification Compliance | | 15 | One-line justification + primary gap if score < max |
+| S2 | Progressive Disclosure | | 15 | One-line justification + primary gap if score < max |
+| S3 | Pattern Recognition | | 10 | One-line justification + primary gap if score < max |
+| C1 | Behavioral Clarity | | 15 | One-line justification + primary gap if score < max |
+| C2 | Scope Definition | | 15 | One-line justification + primary gap if score < max |
+| C3 | Structural Organization | | 10 | One-line justification + primary gap if score < max |
+| B1 | Rule Specificity & WHY | | 10 | One-line justification + primary gap if score < max |
+| B2 | Anti-Pattern Coverage | | 10 | One-line justification + primary gap if score < max |
+| B3 | Scope & Exceptions | | 10 | One-line justification + primary gap if score < max |
 
 ## Critical Issues
 [Must-fix problems that significantly impact effectiveness]
@@ -204,6 +222,7 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 - Concrete suggestions for improvement]
 
 ## Numbered Improvements
+**NEVER place Numbered Improvements before Detailed Analysis — Detailed Analysis always comes first.**
 1. [Highest impact improvement with specific guidance]
 2. [Second priority]
 3. ...
@@ -216,38 +235,6 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 ## Common Failure Patterns
 
 **MANDATORY — READ [`references/failure-patterns.md`](references/failure-patterns.md)**
-
----
-
-## Quick Reference Checklist
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│  PROMPT EVALUATION QUICK CHECK                                          │
-├─────────────────────────────────────────────────────────────────────────┤
-│  Universal (all types)                                                  │
-│    [ ] Knowledge delta: no basics, has expert decision trees            │
-│    [ ] Mindset: thinking patterns + domain procedures                   │
-│    [ ] Anti-patterns: specific NEVER list with WHY                      │
-│    [ ] Freedom: calibrated to task fragility                            │
-│    [ ] Usability: decision trees, actionable, edge cases covered        │
-│                                                                         │
-│  Skills (SKILL.md)                                                      │
-│    [ ] Description: answers WHAT, WHEN, has KEYWORDS                   │
-│    [ ] Progressive disclosure: <500 lines, loading triggers             │
-│    [ ] Pattern: follows Mindset/Navigation/Philosophy/Process/Tool      │
-│                                                                         │
-│  CLAUDE.md / System Prompts                                             │
-│    [ ] Behavioral clarity: unambiguous, non-contradictory               │
-│    [ ] Scope: governs only what needs governing                         │
-│    [ ] Structure: scannable, logically ordered                          │
-│                                                                         │
-│  Bash/Shell Guidance                                                    │
-│    [ ] Rules specific: name commands/patterns, not vague warnings       │
-│    [ ] Anti-patterns cover real failure modes with WHY                  │
-│    [ ] Scope: clear when rules apply, exceptions noted                  │
-└─────────────────────────────────────────────────────────────────────────┘
-```
 
 ---
 
