@@ -86,6 +86,8 @@ Dimensions are grouped. Universal dimensions always apply. Type-specific modules
 
 ## Evaluation Protocol
 
+> **Evaluator's Lens:** Before reading the target, adopt this question: "Does Claude already know this?" — every section gets marked [E], [A], or [R] before scoring begins.
+
 ### Step 0: Detect Prompt Type
 
 Read the target and identify which groups apply:
