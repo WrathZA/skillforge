@@ -81,3 +81,7 @@ An *incomplete* description (missing behaviors) differs from a *wrong* descripti
 - **NEVER mark a description as "wrong" when it's merely "incomplete"**
   **Instead:** Label each discrepancy explicitly: *incomplete* (body has behaviors the description omits) vs. *wrong* (description claims behaviors the body doesn't have).
   **Why:** The remediation differs — incomplete descriptions need additions; wrong descriptions need corrections or removal. Conflating them produces vague, unactionable findings.
+
+- **NEVER use Glob to discover `references/` files**
+  **Instead:** Run `Bash ls <skill-path>/references/` to check whether the directory exists and what files it contains.
+  **Why:** Glob does not reliably find files in skill subdirectories and produces a silent false negative — causing an incorrect "references missing" verdict when the files are actually present.
