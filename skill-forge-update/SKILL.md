@@ -62,19 +62,15 @@ On `(n)`: collect the correction, update the recap, confirm again before proceed
 
 ### Loop
 
-Elicit changes, paraphrase back with the change summary and consistency check below, then ask:
+Elicit changes, paraphrase back with the updated change list and consistency check below, then ask:
 
 ```
-(y)es, confirmed — lock list and proceed / (n)o, revise
+(c)ontinue / (r)evise
 ```
 
-On `(y)`: lock the numbered list and proceed to Phase 2.
+On `(r)`: collect more input, update the change list recap, loop again.
 
-If the user adds items after confirming `y`:
-
-```
-New items added after confirmation — (r)estart Phase 1 with full revised list / (p)roceed with confirmed list
-```
+On `(c)`: lock the numbered list and proceed to Phase 2.
 
 After each response, produce:
 
@@ -108,7 +104,7 @@ Loop does not advance on ambiguity. Every item in the confirmed list must be ind
 
 ## Phase 2 — Apply Changes
 
-Apply all confirmed changes from the Phase 1 list to the skill file. Show a concise diff summary after applying:
+Invoke `/skill-forge-hitl` on the confirmed change list from Phase 1. Apply each item the user approves; skip declined items. After hitl completes, show a concise diff summary:
 
 ```
 ## Changes applied
@@ -132,10 +128,7 @@ If any change affects frontmatter fields, verify compliance against the spec and
 
 ## Phase 3 — Judge & HITL
 
-Invoke `/skill-forge-judge` on the modified skill.
-
-- Score ≥B (80%+): proceed to Phase 4.
-- Score <B: invoke `/skill-forge-hitl` on the numbered improvements skill-forge-judge produced. After skill-forge-hitl completes, proceed to Phase 4.
+Invoke `/skill-forge-judge` on the modified skill. Always invoke `/skill-forge-hitl` on the findings it produces. After skill-forge-hitl completes, proceed to Phase 4.
 
 If skill-forge-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
 
@@ -147,33 +140,25 @@ Do not loop indefinitely.
 
 ---
 
-## Phase 4 — Approve & Save
+## Phase 4 — Save & Activate
 
-Show changed sections only (not the full file). Ask:
-
-```
-(a)pprove and save / (r)evise / (s)kip save
-```
-
-On `(r)`: return to Phase 1 with the user's revision request.
-
-On `(a)`: write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/symlink-global-skills.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
+Write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/symlink-global-skills.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
 
 ---
 
 ## NEVER
 
 - **NEVER apply changes before Phase 1 produces a confirmed change list**
-  **Instead:** Run the elicitation loop until the user explicitly responds `y`.
+  **Instead:** Run the elicitation loop until the user responds `(c)ontinue`.
   **Why:** Applying ambiguous changes produces a result the user didn't want; the subsequent skill-forge-judge then evaluates the wrong output.
 
 - **NEVER skip the four-point consistency check on each proposed change**
   **Instead:** Run all four checks every iteration, even for simple-sounding requests.
   **Why:** "Add a NEVER rule" sounds trivial but frequently introduces rule conflicts or violates the three-part format — these only surface under cross-reference.
 
-- **NEVER apply Phase 1 changes one-by-one through skill-forge-hitl**
-  **Instead:** Apply all confirmed Phase 1 changes together in Phase 2; reserve skill-forge-hitl for Phase 3 judge findings.
-  **Why:** skill-forge-hitl is designed for judge-produced findings. Using it for user-confirmed changes conflates two semantically different approval loops and confuses which loop the user is in.
+- **NEVER use skill-forge-hitl in Phase 1**
+  **Instead:** Phase 1 is elicitation only — collect changes, update the recap, loop with `(c)ontinue / (r)evise`. Use skill-forge-hitl in Phase 2 for application confirmation.
+  **Why:** Mixing elicitation and hitl confirmation in the same phase conflates two distinct loops and confuses which loop the user is in.
 
 - **NEVER skip Phase 3 (skill-forge-judge) after applying changes**
   **Instead:** Always judge the modified skill before presenting for final approval.
