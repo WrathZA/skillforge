@@ -11,14 +11,6 @@ Evaluate any LLM-consumed prompt against quality standards, focused on knowledge
 
 ## Core Philosophy
 
-### What is a Prompt?
-
-Any text consumed by an LLM to modify its behavior. Includes:
-
-- **Skills** (SKILL.md): Hot-swap domain expertise
-- **CLAUDE.md / System prompts**: Behavioral framing, constraints, workflow rules
-- **Bash/Shell guidance**: Environment-specific anti-patterns and constraints
-
 > **Good Prompt = Expert-only Knowledge − What Claude Already Knows**
 
 Restating defaults is token waste.
