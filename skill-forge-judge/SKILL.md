@@ -125,6 +125,7 @@ Filename:   agentskills-spec-YYYY-MM-DD.md   (today's date, e.g. agentskills-spe
 2. If found  → Read it — done.
 3. If not    → Bash: mkdir -p ~/.claude/tmp
                WebFetch https://agentskills.io/specification
+               If WebFetch fails → score S1 from training knowledge; note "spec unavailable" in S1 Notes cell — done.
                Write result to ~/.claude/tmp/agentskills-spec-<today>.md
                Read the file — done.
 ```
