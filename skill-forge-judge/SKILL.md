@@ -197,18 +197,18 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 ## Critical Issues
 [Must-fix problems that significantly impact effectiveness]
 
+## Detailed Analysis
+[For each dimension scoring below 80%, provide:
+- What's missing or problematic
+- Specific evidence with line numbers
+- Concrete suggestions for improvement]
+
 ## Numbered Improvements
 1. [Highest impact improvement with specific guidance]
 2. [Second priority]
 3. ...
 
 (skill-forge-hitl-compatible — invoke /skill-forge-hitl to step through each item.)
-
-## Detailed Analysis
-[For each dimension scoring below 80%, provide:
-- What's missing or problematic
-- Specific evidence with line numbers
-- Concrete suggestions for improvement]
 ```
 
 ---
