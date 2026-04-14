@@ -143,6 +143,8 @@ Note prompt type(s), applicable groups, length, reference files, and loading/tri
 
 Load the reference file for each applicable group. For each dimension: find specific evidence, assign score with one-line justification, note improvements if score < max.
 
+If a reference file cannot be read, halt and report: `[ERROR] Cannot score Group X — reference file not found: <path>`. Do not proceed with that group.
+
 ### Step 4: Calculate Score & Grade
 
 `Grade = (sum of scored dimensions) / (sum of applicable maxes)` → apply grade scale.
