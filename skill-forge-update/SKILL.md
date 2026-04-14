@@ -164,6 +164,3 @@ Write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/b
   **Instead:** Always judge the modified skill before presenting for final approval.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
 
-- **NEVER show the full modified file as the review artifact in Phase 4**
-  **Instead:** Show only changed sections with file:line ranges.
-  **Why:** Full-file reviews bury actual changes; reviewers lose focus and approve without reading what changed.
