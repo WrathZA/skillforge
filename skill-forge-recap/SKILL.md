@@ -30,7 +30,7 @@ The description makes four implicit claims. Check each against the body:
 3. **Keywords** — do searchable terms reflect what the body covers?
 4. **Scope** — does the description under- or over-state coverage?
 
-Also scan for **undeclared behaviors**: things the body does that the description never mentions. These are common after iterative edits — new NEVER rules, phases, or reference files get added without updating the description.
+Also scan for **undeclared behaviors**: things the body does that the description never mentions. Focus on the locations where iterative edits silently accumulate new behavior: NEVER rules, phases/steps, skip/exit conditions, reference-loading triggers, and confirmation loops.
 
 **Before writing your verdict, ask:** *Would an agent picking skills from descriptions alone make the right call?* If the description would misroute the skill, that's Significant drift regardless of how small the wording gap appears.
 
