@@ -11,7 +11,7 @@ Audit a skill by reading its actual implementation and reporting what it *really
 
 ## What to Read
 
-Skills live at `~/.claude/skills/<name>/SKILL.md`.
+Use the path provided or resolved by the environment. Environment-level path overrides (e.g. CLAUDE.md remapping) take precedence over any default path.
 
 If the file doesn't exist, report: "Skill not found — check name spelling" and stop. Do not search for alternatives.
 
