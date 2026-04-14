@@ -133,38 +133,19 @@ Only fetch when the target is a SKILL.md (S1 scoring). Skip entirely for CLAUDE.
 
 ### Step 1: First Pass — Knowledge Delta Scan
 
-Read completely. For each section ask:
-> "Does Claude already know this?"
-
-Mark each section: **[E] Expert** | **[A] Activation** | **[R] Redundant**
-
-Calculate ratio E:A:R. Target: >70% Expert.
+Read completely. Mark each section **[E] Expert** | **[A] Activation** | **[R] Redundant**. Calculate E:A:R ratio — target >70% Expert.
 
 ### Step 2: Structure Analysis
 
-```
-[ ] Identify prompt type(s) and applicable groups
-[ ] Check structure and length
-[ ] List any reference or auxiliary files
-[ ] Note any loading/trigger mechanisms (Skills only)
-```
+Note prompt type(s), applicable groups, length, reference files, and loading/trigger mechanisms.
 
 ### Step 3: Score Each Applicable Dimension
 
-**Load the reference file for each applicable group before scoring.**
-
-For each dimension:
-1. Find specific evidence (quote relevant lines)
-2. Assign score with one-line justification
-3. Note specific improvements if score < max
+Load the reference file for each applicable group. For each dimension: find specific evidence, assign score with one-line justification, note improvements if score < max.
 
 ### Step 4: Calculate Score & Grade
 
-```
-Total = sum of all applicable dimension scores
-Max   = sum of all applicable dimension maxes
-Grade = Total / Max as percentage → apply grade scale
-```
+`Grade = (sum of scored dimensions) / (sum of applicable maxes)` → apply grade scale.
 
 ### Step 5: Generate Report
 
