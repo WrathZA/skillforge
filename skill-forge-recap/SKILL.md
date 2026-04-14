@@ -4,6 +4,7 @@ description: Read a skill's body and report what it actually does vs. what the d
 ---
 
 # Skill Forge Recap
+<!-- Pattern: Tool (structured audit output) -->
 
 Audit a skill by reading its actual implementation and reporting what it *really* does — independent of what the description claims. The description is a claim; the body is the ground truth.
 
