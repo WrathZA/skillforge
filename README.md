@@ -44,5 +44,5 @@ Symlinks each skill directory into `~/.claude/skills/`, making them available to
 
 ## Credits
 
-- **[Matt Pocock](https://github.com/mattpocock)** — `write-a-skill`, the original skill this collection builds on
+- **[Matt Pocock](https://github.com/mattpocock)** ([aihero.dev](https://www.aihero.dev/)) — `write-a-skill`, the original skill this collection builds on
 - **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original eval skill `skill-forge-judge` is based on
