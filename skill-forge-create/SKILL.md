@@ -1,6 +1,6 @@
 ---
 name: skill-forge-create
-description: Create a new SKILL.md via discovery recap, pattern selection, WebFetch spec fetch, knowledge delta discipline, skill-forge-judge + skill-forge-hitl quality gate. Triggers: create a skill, write a skill, new skill, SKILL.md, build a skill.
+description: "Create a new SKILL.md via discovery recap, pattern selection, WebFetch spec fetch, knowledge delta discipline, skill-forge-judge + skill-forge-hitl quality gate. Triggers: create a skill, write a skill, new skill, SKILL.md, build a skill."
 ---
 
 # Skill Forge Create
