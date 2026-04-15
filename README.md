@@ -2,17 +2,7 @@
 
 Quality-gated skill authoring for Claude Code. Build, judge, and ship skills that earn their tokens.
 
-```mermaid
-flowchart LR
-    D[Create] --> E[Judge]
-    A{Existing?} --> B[Recap]
-    A --> C[Update]
-    B -.-> C
-    C --> E
-    E --> G[HITL]
-    G ---> H((Complete))
-    H -.-> A
-```
+![Skill Forge workflow diagram](diagram.svg)
 
 `skill-forge-judge` and `skill-forge-hitl` also work standalone — judge any prompt, step through any numbered list.
 
