@@ -1,0 +1,17 @@
+{
+  "name": "skillforge",
+  "owner": {
+    "name": "WrathZA"
+  },
+  "metadata": {
+    "description": "Quality-gated skill authoring for Claude Code",
+    "homepage": "https://github.com/WrathZA/skillforge"
+  },
+  "plugins": [
+    { "name": "skill-forge-judge",  "source": "./skill-forge-judge"  },
+    { "name": "skill-forge-hitl",   "source": "./skill-forge-hitl"   },
+    { "name": "skill-forge-create", "source": "./skill-forge-create" },
+    { "name": "skill-forge-update", "source": "./skill-forge-update" },
+    { "name": "skill-forge-recap",  "source": "./skill-forge-recap"  }
+  ]
+}

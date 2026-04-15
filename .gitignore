@@ -2,5 +2,4 @@
 *.swp
 *.swo
 .claude/settings.local.json
-.claude-plugin/
 .claude/tmp/
