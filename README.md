@@ -4,14 +4,13 @@ Quality-gated skill authoring for Claude Code. Build, judge, and ship skills tha
 
 ```mermaid
 flowchart LR
-    D{New skill?} --> F[skill-forge-create]
-    F --> E[skill-forge-judge]
+    D[skill-forge-create] --> E[skill-forge-judge]
     A{Existing skill?} --> B[skill-forge-recap]
     A --> C[skill-forge-update]
     B -.-> C
     C --> E
     E --> G[skill-forge-hitl]
-    G -.-> H((Complete))
+    G ---> H((Complete))
     H -.-> A
 ```
 
@@ -46,5 +45,5 @@ See [`principles.md`](principles.md). Short version: knowledge delta not tutoria
 
 ## Credits
 
-- **Matt Pocock** — `write-a-skill`, the original skill this collection builds on
+- **[Matt Pocock](https://github.com/mattpocock)** — `write-a-skill`, the original skill this collection builds on
 - **[softaworks/agent-toolkit](https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge)** — `skill-judge`, the original eval skill `skill-forge-judge` is based on
