@@ -4,12 +4,12 @@ Quality-gated skill authoring for Claude Code. Build, judge, and ship skills tha
 
 ```mermaid
 flowchart LR
-    D[skill-forge-create] --> E[skill-forge-judge]
-    A{Existing skill?} --> B[skill-forge-recap]
-    A --> C[skill-forge-update]
+    D[Create] --> E[Judge]
+    A{Existing?} --> B[Recap]
+    A --> C[Update]
     B -.-> C
     C --> E
-    E --> G[skill-forge-hitl]
+    E --> G[HITL]
     G ---> H((Complete))
     H -.-> A
 ```
