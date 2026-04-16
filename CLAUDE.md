@@ -17,9 +17,9 @@ This repo contains Claude Code agent skills — each skill is a directory with a
   Run each command as a separate Bash tool call.
   **Why:** Claude Code's safety check fires on ambiguous multi-command calls and interrupts mid-flow. Applies to `git` and `gh` especially.
 
-- **NEVER use `|` (pipe) in Bash commands**
+- **NEVER use `|` (pipe), `tee`, `xargs`, or process substitution (`<()`, `>()`) in Bash commands**
   **Instead:** Redirect output with `>` to a temp file, then read it back with the Read tool.
-  **Why:** Claude Code stops execution when it encounters a pipe, interrupting the agent without warning.
+  **Why:** Claude Code stops execution when it encounters pipes or subshell constructs, interrupting the agent without warning.
   Note: `|` in markdown table row syntax is unaffected.
 
 - **NEVER use `$()` command substitution in Bash blocks**
