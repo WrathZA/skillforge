@@ -53,6 +53,7 @@ This repo contains Claude Code agent skills — each skill is a directory with a
 
 - **NEVER use quoted strings as separator output between commands** (e.g. `echo "---"`)
   **Instead:** Use blank lines or plain text output outside of tool calls.
+  **Why:** Unnecessary `echo` calls clutter Bash tool output and can trigger permission prompts when the string contains special characters.
 
 - **NEVER design prompts that rely on empty-line Enter for any action**
   **Instead:** Every selectable option including defaults must have an explicit key (e.g. `(n)one`, `(s)kip`, `(c)ontinue`).
