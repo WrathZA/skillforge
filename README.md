@@ -2,6 +2,8 @@
 
 Quality-gated skill authoring for Claude Code. Build, judge, and ship skills that earn their tokens.
 
+Forge is a collection of skills that work in sequence to hone a skill. Each pass through the cycle — recap, create or update, judge, apply — tightens the prompt until it earns a passing grade. You can enter the loop at any point and repeat until the result is sharp.
+
 ![Skill Forge workflow diagram](diagram.svg)
 
 `skill-forge-judge` and `skill-forge-hitl` also work standalone — judge any prompt, step through any numbered list.
