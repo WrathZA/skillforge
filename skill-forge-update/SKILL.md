@@ -142,7 +142,7 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
-Write the file. If the skill is under `/home/bm/code/skills/`, run `bash /home/bm/code/skills/symlink-global-skills.sh` to activate. If under `/home/bm/.claude/skills/`, changes are immediately active.
+Write the file.
 
 ---
 
