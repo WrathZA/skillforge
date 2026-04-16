@@ -59,7 +59,7 @@ This repo contains Claude Code agent skills — each skill is a directory with a
   **Why:** Claude Code CLI cannot submit an empty line.
 
 - **NEVER read skill files via `~/.claude/skills/` paths**
-  **Instead:** Always use the absolute path to the skills project directory — e.g. `Read <project-root>/skill-forge-judge/SKILL.md`.
+  **Instead:** Use the absolute path to the skills project directory (the directory containing this CLAUDE.md) — e.g. `Read /absolute/path/to/skills/skill-forge-judge/SKILL.md`.
   **Why:** `~/.claude/skills/` is a symlink back to the project directory; Claude Code's permission system fires on symlink traversal and prompts the user, interrupting the agent mid-task.
 
 Outside these rules, use your judgment. Prefer the simplest approach that works — if a rule doesn't cover the situation, act on the merits rather than inventing constraints.
