@@ -48,7 +48,7 @@ This repo contains Claude Code agent skills — each skill is a directory with a
   **Why:** Claude Code runs in a non-interactive shell; `-i` flags hang waiting for input that never arrives.
 
 - **NEVER use `--no-verify` on git commands** unless the user explicitly requests it
-  **Instead:** Fix the underlying hook failure — read the error, diagnose the cause, then commit cleanly.
+  **Instead:** Read the hook's error output, diagnose the root cause, fix the offending file(s), re-stage, and commit cleanly.
   **Why:** Bypassing hooks hides real problems (lint failures, test failures, secret detection) and violates trust with the repo's safety net.
 
 - **NEVER use quoted strings as separator output between commands** (e.g. `echo "---"`)
