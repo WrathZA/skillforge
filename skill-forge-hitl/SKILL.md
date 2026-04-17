@@ -7,7 +7,7 @@ description: "Apply a numbered list one item at a time — status board upfront,
 
 Throw the lasso, pull it tight, move to the next. One change at a time, one approval at a time — no bundling, no skipping ahead.
 
-**Core question for every item:** What's the smallest change that makes this finding false? Apply only that — nothing more.
+**Core question for every item:** What's the smallest change that makes this finding false? Apply only that — nothing more. Verify: if any part of the change were removed, would the finding still be true? If yes, the change is too large.
 
 ## Workflow
 
