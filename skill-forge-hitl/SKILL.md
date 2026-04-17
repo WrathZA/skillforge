@@ -107,6 +107,8 @@ git add <changed files>
 git commit -m "<short description of this improvement>"
 ```
 
+If commit fails (pre-commit hook, empty diff): show the error, fix the issue, re-stage, and retry. If the fix changes the applied improvement, re-show the diff and re-ask for approval — do not silently commit a different change than what was shown.
+
 If not in a git repo: skip commits entirely. Mark each approved item `[✓]` and continue — do not warn on every item, the single board-level notice is sufficient.
 
 ## NEVER
