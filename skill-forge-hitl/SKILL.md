@@ -15,6 +15,8 @@ Throw the lasso, pull it tight, move to the next. One change at a time, one appr
 
 Parse the numbered improvement list from context. If there are multiple lists or it's unclear which to apply, ask once before starting — not mid-loop. If the response does not resolve the ambiguity, stop: "Still unclear which list to apply — please re-invoke with the target list quoted directly."
 
+If improvements reference specific files, verify they still exist and haven't changed substantially since the evaluation. If a target file is missing or heavily modified, note it at the top of the board: "⚠ Target may be stale — <file> has changed since evaluation. Items may not apply cleanly. (c)ontinue / (Q)uit?"
+
 Check git status before showing the board. If the working directory is not a git repo, note this at the top of the board and skip all commit steps:
 
 ```
