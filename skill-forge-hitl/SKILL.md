@@ -41,6 +41,8 @@ If the smallest change requires touching more than one logical unit (function, s
 
 Do not touch adjacent code, bundle items, or anticipate the next improvement. If applying this item overlaps with a later item (same lines, same function), apply only what's needed now and note the overlap in the change summary.
 
+If an improvement requires non-edit actions (adding a dependency, creating a new file, running a command), describe the action in the change summary and let the user decide whether to perform it.
+
 **c. Show the change**
 ```
 Changed: <file>:<lines> — <one-line description>
