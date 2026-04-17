@@ -17,6 +17,8 @@ Parse the numbered improvement list from context. If there are multiple lists or
 
 If improvements reference specific files, verify they still exist and haven't changed substantially since the evaluation. If a target file is missing or heavily modified, note it at the top of the board: "⚠ Target may be stale — <file> has changed since evaluation. Items may not apply cleanly. (c)ontinue / (Q)uit?"
 
+If items have dependencies (item 3 requires item 1), note the dependency at the board level. Do not re-order — apply in sequence and mark dependent items `[○]` if their prerequisite was skipped.
+
 Check git status before showing the board. If the working directory is not a git repo, note this at the top of the board and skip all commit steps:
 
 ```
