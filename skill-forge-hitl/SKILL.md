@@ -56,15 +56,17 @@ Changed: <file>:<lines> — <one-line description>
 (a)pprove, (r)evise, (s)kip, (o)bsolete, (A)ccept-all, (k)skip-all, (Q)uit?
 ```
 
-Wait. Do not advance until the user responds. Accept single-key input — `a`, `r`, `s`, `o`, `A`, `k`, or `Q`. Any other input is a stop signal: show the current board and ask "Stop here? (y) to pause, (c)ontinue from #N?"
+Wait. Do not advance until the user responds. Any input not in the table below is a stop signal: show the current board and ask "Stop here? (y) to pause, (c)ontinue from #N?"
 
-- **a** — commit the change, mark `[✓]`, advance
-- **r** — collect guidance, re-apply, show again; repeat until approved. After 3 revisions without approval, surface the stall: "Revised N times — skip and file a separate issue, or keep going?"
-- **s** — mark `[–]`, note the reason if given, advance (`s` = don't want this change)
-- **o** — mark `[○]`, advance without committing (`o` = already done, no longer applies, or impossible)
-- **A** — commit the current change, then apply and commit all remaining items without per-item prompts; mark each `[✓]` as it completes; show the final board when done
-- **k** — mark the current item `[–]`, mark all remaining items `[–]`, show the final board, exit the loop
-- **Q** — mark all remaining items `[–]`, show the final board, exit
+| Key | Commit? | Mark | Advance to | Special |
+|-----|---------|------|------------|---------|
+| `a` | yes | `[✓]` | next item | — |
+| `r` | no | — | re-apply same item | Collect guidance, re-show. After 3 revisions: "Revised N times — skip and file a separate issue, or keep going?" |
+| `s` | no | `[–]` | next item | Note reason if given |
+| `o` | no | `[○]` | next item | Already done / no longer applies / impossible |
+| `A` | yes (current + all remaining) | `[✓]` each | final board | Skip per-item prompts for remaining |
+| `k` | no | `[–]` current + all remaining | final board | — |
+| `Q` | no | `[–]` all remaining (current unchanged) | final board | — |
 
 **e. Update the board** — after each decision, show the current state of all items using the status symbols. For accept-all (`A`): skip intermediate board updates — apply and commit each remaining item silently, then show the final board once in step 3.
 
