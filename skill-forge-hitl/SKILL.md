@@ -1,6 +1,6 @@
 ---
 name: skill-forge-hitl
-description: "Apply a numbered list one item at a time — status board upfront, per-item approve/skip, approve-all mode, commits after each approved item. Use when stepping through skill-forge-judge findings or any numbered changes. Triggers: apply these, go through each one, apply improvements, commit each change."
+description: "Apply a numbered list one item at a time — status board upfront, per-item approve/skip, approve-all mode, commits after each approved item. Use when stepping through skill-forge-judge findings or any numbered changes. Triggers: apply these, go through each one, apply improvements, commit each change. Not for: bulk refactors, one-shot changes, or changes that don't need per-item review."
 ---
 
 # HITL Loop
