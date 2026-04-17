@@ -23,32 +23,17 @@ Check git status before showing the board. If the working directory is not a git
 ℹ No git repo — changes will be applied but not committed.
 ```
 
-Display the full status board upfront so the user can see the whole plan:
+Display the full status board upfront: all items with `[ ]` markers, then `(A)pprove all / (s)tart` options. Symbols: `[ ]` pending, `[✓]` done, `[→]` in progress, `[–]` skipped, `[○]` obsolete.
 
-```
-Applying N improvements:
+If the user responds `A`: apply and commit all items in sequence, then show the final board per step 3.
 
-  [ ] 1. <improvement summary>
-  [ ] 2. <improvement summary>
-  [ ] 3. <improvement summary>
-
-(A)pprove all — apply every item without per-item prompts
-(s)tart — begin item-by-item review
-```
-
-If the user responds `A` at the board prompt: apply and commit all items in sequence, then show the final board per step 3.
-
-If the user responds `s` at the board prompt: begin the per-item loop from item #1.
+If the user responds `s`: begin the per-item loop from item #1.
 
 ### 2 — Apply each one
 
 Repeat for every item in order:
 
-**a. Announce**
-```
-─── #N of M ───
-<Full improvement description>
-```
+**a. Announce** — show `─── #N of M ───` and the full improvement description.
 
 **b. Apply**
 
@@ -77,26 +62,11 @@ Wait. Do not advance until the user responds. Accept single-key input — `a`, `
 - **k** — mark the current item `[–]`, mark all remaining items `[–]`, show the final board, exit the loop
 - **Q** — mark all remaining items `[–]`, show the final board, exit
 
-**e. Update the board**
-
-After each decision, show the current state:
-```
-  [✓] 1. <done>
-  [→] 2. <in progress>
-  [ ] 3. <pending>
-  [–] 4. <skipped>
-  [○] 5. <obsolete>
-```
-
-For accept-all (`A`): skip intermediate board updates — apply and commit each remaining item silently, then show the final board once in step 3.
+**e. Update the board** — after each decision, show the current state of all items using the status symbols. For accept-all (`A`): skip intermediate board updates — apply and commit each remaining item silently, then show the final board once in step 3.
 
 ### 3 — Done
 
-When all items are processed, show the final board and a one-liner:
-
-```
-Done. Applied: N  Skipped: M  Revised then applied: P
-```
+When all items are processed, show the final board and a one-liner: `Done. Applied: N  Skipped: M  Revised then applied: P`
 
 ## Commits
 
