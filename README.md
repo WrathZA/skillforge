@@ -23,11 +23,15 @@ Forge is a collection of skills that work in sequence to hone a skill. Each pass
 
 ## Install
 
-Add this marketplace to Claude Code, then install individual skills:
+The five skills are designed to work in concert — `create` and `update` call `judge` and `hitl` as part of the quality gate, and `recap` feeds into `update`. Installing all five is recommended so the full forge cycle is available:
 
 ```
 /plugin marketplace add WrathZA/skillforge
+/plugin install skill-forge-recap
+/plugin install skill-forge-create
+/plugin install skill-forge-update
 /plugin install skill-forge-judge
+/plugin install skill-forge-hitl
 ```
 
 ## Principles
