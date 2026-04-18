@@ -137,6 +137,8 @@ Note prompt type(s), applicable groups, length, reference files, and loading/tri
 
 ### Step 3: Score Each Applicable Dimension
 
+Before opening the rubric, ask: what does this section assume Claude doesn't already know?
+
 Load the reference file for each applicable group. For each dimension: find specific evidence, assign score with one-line justification, note improvements if score < max.
 
 If a reference file cannot be read, halt and report: `[ERROR] Cannot score Group X — reference file not found: <path>`. Do not proceed with that group.
