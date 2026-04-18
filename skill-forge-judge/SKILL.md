@@ -157,7 +157,7 @@ If a reference file cannot be read, halt and report: `[ERROR] Cannot score Group
 - **Type**: [Skill / CLAUDE.md / System Prompt / Other] + applicable groups
 - **Score**: X / Y (Z%)
 - **Grade**: [A/B/C/D/F]
-- **Knowledge Ratio**: E:A:R = X:Y:Z
+- **Knowledge Ratio**: Expert:Activation:Redundant = X:Y:Z
 - **Verdict**: [One sentence assessment]
 
 ## Group Scores
