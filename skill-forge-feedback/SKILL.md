@@ -90,6 +90,8 @@ Ask explicitly:
 
 **Labels:** `feedback` + type label (`bug` / `friction` / `feature` / `other`)
 
+Ensure the `feedback`, `bug`, `friction`, `feature`, and `other` labels exist in the repo before filing — `gh issue create` silently fails on unknown labels.
+
 ### Detect filing method (in order)
 
 **1. gh CLI**
