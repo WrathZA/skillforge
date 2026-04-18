@@ -134,7 +134,7 @@ If the encoded URL exceeds ~2000 chars, truncate the HOW field or drop WHEN — 
   **Instead:** Write body to `/tmp/feedback-body.txt` with the Write tool, then pass `--body-file /tmp/feedback-body.txt`.
   **Why:** Multi-line bodies with `#` headers trigger Claude Code's permission check on every execution.
 
-- **NEVER chain Bash commands with `&&` or `;`**
+- **NEVER chain Bash commands with `&&` or `;` in Bash tool calls**
   **Instead:** Run each command as a separate Bash tool call.
   **Why:** Claude Code's safety check fires on multi-command calls and interrupts mid-flow.
 
