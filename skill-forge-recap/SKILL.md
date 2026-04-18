@@ -76,6 +76,17 @@ Otherwise, show only the options relevant to what was found:
 (j)udge           — run skill-forge-judge for quality scoring        [always]
 ```
 
+### (f) Fix frontmatter
+
+Produce a numbered findings list covering only the drifted fields, formatted for skill-forge-hitl. Each item must include the current value and the corrected value:
+
+```
+1. name: "<current>" → "<corrected>"
+2. description: "<current>" → "<corrected>"
+```
+
+Include only fields where drift was found. Then invoke `/skill-forge-hitl` on that list.
+
 ---
 
 ## Verdict Criteria
