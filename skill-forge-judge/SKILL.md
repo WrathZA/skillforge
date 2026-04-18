@@ -1,6 +1,6 @@
 ---
 name: skill-forge-judge
-description: "Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and skill-forge-hitl-compatible findings list. Triggers: judge/review/audit/score/evaluate this skill or prompt."
+description: "Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and step-through-ready numbered improvements list. Triggers: judge/review/audit/score/evaluate this skill or prompt."
 compatibility: Claude Code
 ---
 
@@ -137,6 +137,8 @@ Note prompt type(s), applicable groups, length, reference files, and loading/tri
 
 ### Step 3: Score Each Applicable Dimension
 
+Before opening the rubric, ask: what does this section assume Claude doesn't already know?
+
 Load the reference file for each applicable group. For each dimension: find specific evidence, assign score with one-line justification, note improvements if score < max.
 
 If a reference file cannot be read, halt and report: `[ERROR] Cannot score Group X — reference file not found: <path>`. Do not proceed with that group.
@@ -157,7 +159,7 @@ If a reference file cannot be read, halt and report: `[ERROR] Cannot score Group
 - **Type**: [Skill / CLAUDE.md / System Prompt / Other] + applicable groups
 - **Score**: X / Y (Z%)
 - **Grade**: [A/B/C/D/F]
-- **Knowledge Ratio**: E:A:R = X:Y:Z
+- **Knowledge Ratio**: Expert:Activation:Redundant = X:Y:Z
 - **Verdict**: [One sentence assessment]
 
 ## Group Scores
@@ -201,7 +203,6 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 - Concrete suggestions for improvement]
 
 ## Numbered Improvements
-**NEVER place Numbered Improvements before Detailed Analysis — Detailed Analysis always comes first.**
 1. [Highest impact improvement with specific guidance]
 2. [Second priority]
 3. ...
@@ -238,11 +239,22 @@ skill-forge-judge can and should evaluate itself. The criteria must be self-cons
 ## NEVER Do When Evaluating
 
 - **NEVER** give high scores just because it "looks professional" or is well-formatted — formatting is cheap; rewarding it masks content gaps and trains authors to polish instead of improve
+  **INSTEAD:** Score content for expert knowledge density, not visual polish.
 - **NEVER** ignore token waste — redundant content dilutes expert signal and teaches authors that padding is acceptable; deduct consistently to create the right incentive
+  **INSTEAD:** Deduct from U1 consistently regardless of overall quality; note the specific redundant lines.
 - **NEVER** let length impress you — a 500-line prompt with 80% activation content is worse than a 50-line one with pure expert knowledge; length is effort, not value
+  **INSTEAD:** Measure the Expert:Activation:Redundant ratio; a short high-Expert prompt outscores a long Activation-heavy one.
 - **NEVER** skip mentally testing decision trees — plausible-looking trees often have unreachable branches or missing cases that only surface when traced
+  **INSTEAD:** Trace each branch to verify it terminates with a clear action; flag any branch that dead-ends or loops.
 - **NEVER** forgive explaining basics with "but it provides helpful context" — it sets a precedent that activation content earns tokens; future versions accumulate more
+  **INSTEAD:** Mark the section [R] and deduct from U1; note the specific lines in Detailed Analysis.
 - **NEVER** overlook missing anti-patterns — absence of a NEVER list usually means the author hasn't hit the failure modes yet, not that they don't exist
+  **INSTEAD:** Note "NEVER list absent" as a Critical Issue and deduct from U3.
 - **NEVER** assume all procedures are valuable — generic procedures (open, edit, save) inflate U2 scores without adding knowledge delta
+  **INSTEAD:** Ask "would Claude follow this procedure without being told?" — if yes, mark [A] or [R], not [E].
 - **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality, making all other work invisible
+  **INSTEAD:** Score S1 harshly for vague or keyword-poor descriptions; a skill that doesn't activate is a failed skill regardless of body quality.
 - **NEVER** compare percentage scores across evaluations without checking which groups were scored — U+S (120 pts) and U+C+B (150 pts) are different denominators; the percentages are comparable, the raw scores are not
+  **INSTEAD:** Always note the denominator in the report (e.g., "89% on U+S = 107/120") so cross-evaluation comparisons are valid.
+- **NEVER** place Numbered Improvements before Detailed Analysis — the reader needs context before recommendations; without it, improvements land without evidence and get dismissed or misapplied
+  **INSTEAD:** Always write Detailed Analysis first, then Numbered Improvements immediately after.
