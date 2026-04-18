@@ -237,13 +237,22 @@ skill-forge-judge can and should evaluate itself. The criteria must be self-cons
 ## NEVER Do When Evaluating
 
 - **NEVER** give high scores just because it "looks professional" or is well-formatted — formatting is cheap; rewarding it masks content gaps and trains authors to polish instead of improve
+  **INSTEAD:** Score content for expert knowledge density, not visual polish.
 - **NEVER** ignore token waste — redundant content dilutes expert signal and teaches authors that padding is acceptable; deduct consistently to create the right incentive
+  **INSTEAD:** Deduct from U1 consistently regardless of overall quality; note the specific redundant lines.
 - **NEVER** let length impress you — a 500-line prompt with 80% activation content is worse than a 50-line one with pure expert knowledge; length is effort, not value
+  **INSTEAD:** Measure the Expert:Activation:Redundant ratio; a short high-Expert prompt outscores a long Activation-heavy one.
 - **NEVER** skip mentally testing decision trees — plausible-looking trees often have unreachable branches or missing cases that only surface when traced
+  **INSTEAD:** Trace each branch to verify it terminates with a clear action; flag any branch that dead-ends or loops.
 - **NEVER** forgive explaining basics with "but it provides helpful context" — it sets a precedent that activation content earns tokens; future versions accumulate more
+  **INSTEAD:** Mark the section [R] and deduct from U1; note the specific lines in Detailed Analysis.
 - **NEVER** overlook missing anti-patterns — absence of a NEVER list usually means the author hasn't hit the failure modes yet, not that they don't exist
+  **INSTEAD:** Note "NEVER list absent" as a Critical Issue and deduct from U3.
 - **NEVER** assume all procedures are valuable — generic procedures (open, edit, save) inflate U2 scores without adding knowledge delta
+  **INSTEAD:** Ask "would Claude follow this procedure without being told?" — if yes, mark [A] or [R], not [E].
 - **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality, making all other work invisible
+  **INSTEAD:** Score S1 harshly for vague or keyword-poor descriptions; a skill that doesn't activate is a failed skill regardless of body quality.
 - **NEVER** compare percentage scores across evaluations without checking which groups were scored — U+S (120 pts) and U+C+B (150 pts) are different denominators; the percentages are comparable, the raw scores are not
+  **INSTEAD:** Always note the denominator in the report (e.g., "89% on U+S = 107/120") so cross-evaluation comparisons are valid.
 - **NEVER** place Numbered Improvements before Detailed Analysis — the reader needs context before recommendations; without it, improvements land without evidence and get dismissed or misapplied
   **INSTEAD:** Always write Detailed Analysis first, then Numbered Improvements immediately after.
