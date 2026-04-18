@@ -93,7 +93,7 @@ Invoke `/skill-forge-update` and pass the recap output as pre-loaded context. St
 
 ### (j) Judge
 
-Invoke `/skill-forge-judge` on the skill. This is always available — continuous refinement applies even when no drift was detected.
+Invoke `/skill-forge-judge` on the recapped skill. This is always available — continuous refinement applies even when no drift was detected.
 
 ---
 
