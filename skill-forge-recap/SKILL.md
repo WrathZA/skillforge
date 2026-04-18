@@ -1,6 +1,6 @@
 ---
 name: skill-forge-recap
-description: "Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill]."
+description: "Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. After the recap, offers context-sensitive actions: fix frontmatter via HITL, hand off to skill-forge-update, or run skill-forge-judge. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill]."
 ---
 
 # Skill Forge Recap
@@ -56,6 +56,46 @@ Also scan for **undeclared behaviors**: things the body does that the descriptio
 
 **Verdict:** Aligned / Minor drift / Significant drift
 ```
+
+---
+
+## Post-Recap Actions
+
+After writing the recap block, classify the findings into two buckets:
+
+- **Frontmatter drift**: discrepancies in the `name` or `description` fields
+- **Body drift**: behavioral discrepancies or undeclared behaviors
+
+If neither bucket has findings, output "No drift found." and stop — do not show the action menu.
+
+Otherwise, show only the options relevant to what was found:
+
+```
+(f)ix frontmatter — HITL through corrected name/description fields  [only if frontmatter drift]
+(u)pdate body     — hand off to skill-forge-update with drift loaded [only if body drift]
+(j)udge           — run skill-forge-judge for quality scoring        [always]
+```
+
+If both frontmatter and body drift are detected, show all applicable options together.
+
+### (f) Fix frontmatter
+
+Produce a numbered findings list covering only the drifted fields, formatted for skill-forge-hitl. Each item must include the current value and the corrected value:
+
+```
+1. name: "<current>" → "<corrected>"
+2. description: "<current>" → "<corrected>"
+```
+
+Include only fields where drift was found. Then invoke `/skill-forge-hitl` on that list.
+
+### (u) Update body
+
+Invoke `/skill-forge-update` and pass the recap output as pre-loaded context. State explicitly that Phase 0 is already complete so skill-forge-update skips directly to Phase 1 change elicitation.
+
+### (j) Judge
+
+Invoke `/skill-forge-judge` on the recapped skill. This is always available — continuous refinement applies even when no drift was detected.
 
 ---
 
