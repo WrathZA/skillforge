@@ -26,7 +26,7 @@ After the user picks a type, ask targeted follow-ups one at a time:
 
 Keep asking until the user signals done (e.g., "that's it", "(d)one"). Do not stop after one answer — first answers are surface; follow-up gets the root.
 
-Signal: **(d)one — move to recap**
+Signal: **(d)one — move to recap** / **(q)uit — abandon feedback without filing**
 
 Before displaying the recap, verify you can fill all five fields (WHAT, WHY, WHERE, HOW, WHEN) from what the user has said. Any field still "unknown" is your next question — ask it before moving on.
 
