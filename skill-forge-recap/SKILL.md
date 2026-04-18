@@ -91,6 +91,10 @@ Include only fields where drift was found. Then invoke `/skill-forge-hitl` on th
 
 Invoke `/skill-forge-update` and pass the recap output as pre-loaded context. State explicitly that Phase 0 is already complete so skill-forge-update skips directly to Phase 1 change elicitation.
 
+### (j) Judge
+
+Invoke `/skill-forge-judge` on the skill. This is always available — continuous refinement applies even when no drift was detected.
+
 ---
 
 ## Verdict Criteria
