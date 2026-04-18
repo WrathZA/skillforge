@@ -120,6 +120,8 @@ https://github.com/WrathZA/skill-forge/issues/new?title=<encoded-title>&body=<en
 
 Output: `Open this URL to submit your feedback:` followed by the link.
 
+If the encoded URL exceeds ~2000 chars, truncate the HOW field or drop WHEN — browsers silently clip URLs past this limit.
+
 ## NEVER
 
 - **NEVER upload a context export without an explicit `(y)es` in Phase 3**
