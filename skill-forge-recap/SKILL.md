@@ -1,6 +1,6 @@
 ---
 name: skill-forge-recap
-description: "Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill]."
+description: "Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict. After the recap, offers context-sensitive actions: fix frontmatter via HITL, hand off to skill-forge-update, or run skill-forge-judge. Use before updating a skill. Triggers: recap [skill], what does [skill] do, audit [skill] description, summarize [skill]."
 ---
 
 # Skill Forge Recap
