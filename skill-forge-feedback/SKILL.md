@@ -104,9 +104,11 @@ If exit code 0, write body to `/tmp/feedback-body.txt` (Write tool), then:
 gh issue create --repo WrathZA/skill-forge --title "[<type>] <summary>" --label "feedback,<type>" --body-file /tmp/feedback-body.txt
 ```
 
+If `gh issue create` fails (non-zero exit), fall through to method 2.
+
 **2. GitHub MCP tools**
 
-If `mcp__github__create_issue` (or equivalent) is in your available tool list, use it to create the issue against `WrathZA/skill-forge`.
+If `mcp__github__create_issue` (or equivalent) is in your available tool list, use it to create the issue against `WrathZA/skill-forge`. If it fails, fall through to method 3.
 
 **3. Pre-filled URL fallback**
 
