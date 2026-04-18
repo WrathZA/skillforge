@@ -76,6 +76,8 @@ Otherwise, show only the options relevant to what was found:
 (j)udge           — run skill-forge-judge for quality scoring        [always]
 ```
 
+If both frontmatter and body drift are detected, show all applicable options together.
+
 ### (f) Fix frontmatter
 
 Produce a numbered findings list covering only the drifted fields, formatted for skill-forge-hitl. Each item must include the current value and the corrected value:
