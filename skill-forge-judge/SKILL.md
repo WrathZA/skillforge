@@ -1,6 +1,6 @@
 ---
 name: skill-forge-judge
-description: "Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and skill-forge-hitl-compatible findings list. Triggers: judge/review/audit/score/evaluate this skill or prompt."
+description: "Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts, bash guidance) for quality: grouped dimensional scoring with letter grade and step-through-ready numbered improvements list. Triggers: judge/review/audit/score/evaluate this skill or prompt."
 compatibility: Claude Code
 ---
 
