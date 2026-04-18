@@ -68,6 +68,14 @@ After writing the recap block, classify the findings into two buckets:
 
 If neither bucket has findings, output "No drift found." and stop — do not show the action menu.
 
+Otherwise, show only the options relevant to what was found:
+
+```
+(f)ix frontmatter — HITL through corrected name/description fields  [only if frontmatter drift]
+(u)pdate body     — hand off to skill-forge-update with drift loaded [only if body drift]
+(j)udge           — run skill-forge-judge for quality scoring        [always]
+```
+
 ---
 
 ## Verdict Criteria
