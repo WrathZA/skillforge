@@ -87,6 +87,10 @@ Produce a numbered findings list covering only the drifted fields, formatted for
 
 Include only fields where drift was found. Then invoke `/skill-forge-hitl` on that list.
 
+### (u) Update body
+
+Invoke `/skill-forge-update` and pass the recap output as pre-loaded context. State explicitly that Phase 0 is already complete so skill-forge-update skips directly to Phase 1 change elicitation.
+
 ---
 
 ## Verdict Criteria
