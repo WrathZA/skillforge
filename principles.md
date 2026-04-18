@@ -40,6 +40,14 @@ All menus and confirmation prompts must use `(x)word` format — one key per opt
 
 **INSTEAD:** `(a)pprove / (r)evise / (s)kip` — every selectable option has an explicit key, including defaults. Never write `"accept, revise, or skip?"` as plain prose.
 
+## Continuous refinement
+
+A skill is never finished — it can always be sharpened. The forge cycle (recap → update → judge → HITL) is designed to be re-enterable at any point and repeatable without a specific reason to change. Run `/skill-forge-judge` after any recap, even when no drift is detected.
+
+**WHY:** Skills accumulate invisible debt as the codebase, tooling, or usage patterns evolve. A skill that earned its grade months ago may have drifted below it today.
+
+**INSTEAD:** Treat judging as a default close-out step, not a remediation step. The grade tells you whether the skill is still earning its tokens.
+
 ## Todo lives in the repo
 
 `todo.md` is the single source of truth for pending work. It will migrate to GitHub Issues when the volume justifies it. Do not track work in memory or conversation context only.

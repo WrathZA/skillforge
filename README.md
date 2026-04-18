@@ -11,7 +11,7 @@ Forge is a collection of skills that work in sequence to hone a skill. Each pass
 
 ## Skills
 
-**[skill-forge-recap](skill-forge-recap/)** — audits a skill by reading its body independently of its description. Reports what the skill *actually* does, flags undeclared behaviors, and verdicts drift as aligned / minor / significant. Use before updating.
+**[skill-forge-recap](skill-forge-recap/)** — audits a skill by reading its body independently of its description. Reports what the skill *actually* does, flags undeclared behaviors, and verdicts drift as aligned / minor / significant. After the verdict, offers context-sensitive next steps: fix frontmatter via HITL, hand off to skill-forge-update, or run skill-forge-judge.
 
 **[skill-forge-create](skill-forge-create/)** — builds a new skill from scratch: discovery recap loop to nail domain and failure modes, pattern selection, spec-fetching draft phase enforcing knowledge-delta discipline, then judge + HITL quality gate before install.
 
@@ -36,7 +36,7 @@ The five skills are designed to work in concert — `create` and `update` call `
 
 ## Principles
 
-See [`principles.md`](principles.md). Short version: knowledge delta not tutorials, single-keypress menus, no cross-skill file deps, every NEVER needs WHY + INSTEAD.
+See [`principles.md`](principles.md). Short version: knowledge delta not tutorials, single-keypress menus, no cross-skill file deps, every NEVER needs WHY + INSTEAD, and skills are never finished — judge repeatedly, not just when something breaks.
 
 ## Local Development
 
