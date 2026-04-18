@@ -201,7 +201,6 @@ Include only rows for groups detected in Step 0. Omit rows for groups that don't
 - Concrete suggestions for improvement]
 
 ## Numbered Improvements
-**NEVER place Numbered Improvements before Detailed Analysis — Detailed Analysis always comes first.**
 1. [Highest impact improvement with specific guidance]
 2. [Second priority]
 3. ...
@@ -246,3 +245,5 @@ skill-forge-judge can and should evaluate itself. The criteria must be self-cons
 - **NEVER** assume all procedures are valuable — generic procedures (open, edit, save) inflate U2 scores without adding knowledge delta
 - **NEVER** undervalue the description field for Skills — it is the only thing the agent sees before deciding whether to load the skill; poor description = skill never activates regardless of content quality, making all other work invisible
 - **NEVER** compare percentage scores across evaluations without checking which groups were scored — U+S (120 pts) and U+C+B (150 pts) are different denominators; the percentages are comparable, the raw scores are not
+- **NEVER** place Numbered Improvements before Detailed Analysis — the reader needs context before recommendations; without it, improvements land without evidence and get dismissed or misapplied
+  **INSTEAD:** Always write Detailed Analysis first, then Numbered Improvements immediately after.
