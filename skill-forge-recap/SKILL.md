@@ -59,6 +59,17 @@ Also scan for **undeclared behaviors**: things the body does that the descriptio
 
 ---
 
+## Post-Recap Actions
+
+After writing the recap block, classify the findings into two buckets:
+
+- **Frontmatter drift**: discrepancies in the `name` or `description` fields
+- **Body drift**: behavioral discrepancies or undeclared behaviors
+
+If neither bucket has findings, output "No drift found." and stop — do not show the action menu.
+
+---
+
 ## Verdict Criteria
 
 **Minor drift**: Description is imprecise but not misleading. The skill would still be selected for the right task.
