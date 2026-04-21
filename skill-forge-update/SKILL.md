@@ -104,7 +104,7 @@ Loop does not advance on ambiguity. Every item in the confirmed list must be ind
 
 ## Phase 2 — Apply Changes
 
-Invoke `/skill-forge-hitl` on the confirmed change list from Phase 1. Apply each item the user approves; skip declined items. After hitl completes, show a concise diff summary:
+Invoke `/skill-forge-hitl` on the confirmed change list from Phase 1. Apply each item the user approves; skip declined items. When hitl outputs its final board, proceed immediately to Phase 3 — do not treat hitl's completion message as the end of the workflow. After hitl completes, show a concise diff summary:
 
 ```
 ## Changes applied

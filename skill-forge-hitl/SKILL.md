@@ -72,7 +72,7 @@ Wait. Do not advance until the user responds. Any input not in the table below i
 
 ### 3 — Done
 
-When all items are processed, show the final board and a one-liner: `Done. Applied: N  Skipped: M  Revised then applied: P`
+When all items are processed, show the final board and a one-liner: `HITL complete. Applied: N  Skipped: M  Revised then applied: P`
 
 ## Commits
 
