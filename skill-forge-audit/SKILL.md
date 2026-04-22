@@ -38,7 +38,7 @@ For each discovered skill, in order:
    - Skill name
    - Grade (A/B/C/D/F)
    - Score (X/Y, Z%)
-   - Numbered Improvements items 1–5 (or all if fewer than 5)
+   - Numbered Improvements: up to 5 items (all if fewer than 5 exist)
 
 Emit a one-line status per skill as each evaluation completes — do not wait until all are done:
 ```
