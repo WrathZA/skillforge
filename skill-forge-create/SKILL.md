@@ -84,11 +84,9 @@ Invoke `/skill-forge-judge` on the draft. (Requires skill-forge-judge to be inst
 
 Target: ≥B (80%+). For a SKILL.md with no bash guidance → U + S (120 pts max) → ≥96 pts.
 
-If any dimension scores below 80%, invoke `/skill-forge-hitl` on the numbered improvements list skill-forge-judge produced. Do not apply fixes manually — that's /skill-forge-hitl's job.
+Always invoke `/skill-forge-hitl` on the numbered improvements list skill-forge-judge produced, regardless of grade. Do not apply fixes manually — that's /skill-forge-hitl's job.
 
 If the /skill-forge-hitl loop stalls on a dimension (same item rejected after 3 revisions), surface it to the user: "Stuck on [dimension] — here's what I tried. Options: accept the current draft, revise the scope, or skip."
-
-If the draft scores ≥B, proceed. Do not chase A — self-scoring A is a warning sign the criteria were written to fit the skill.
 
 ---
 
