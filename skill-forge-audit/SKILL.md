@@ -122,6 +122,10 @@ If nothing was skipped: omit the "Skipped" section.
   **Instead:** Sort by grade ascending (F first, A last) within each section.
   **Why:** Alphabetical sort buries the worst skills; the report's job is to surface where effort is needed most.
 
+- **NEVER read SKILL.md files via `~/.claude/skills/` paths**
+  **Instead:** Use the absolute path to the skills project directory (the repo root where this audit runs).
+  **Why:** `~/.claude/skills/` is a symlink back to the project; Claude Code's permission system fires on symlink traversal and interrupts the audit mid-run with a permission prompt.
+
 - **NEVER abort the audit when a single skill errors**
   **Instead:** Record `ERR` for that skill and continue to the next one.
   **Why:** A failed judge run on one skill should not discard results already collected for the others — partial results are more useful than none.
