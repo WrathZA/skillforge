@@ -48,6 +48,8 @@ Emit a one-line status per skill as each evaluation completes — do not wait un
 
 If `/skill-forge-judge` is not installed: output "skill-forge-judge is required — install it before running skill-forge-audit." and stop.
 
+If N > 10: output "About to run N skill-forge-judge evaluations — this may take several minutes. Proceed? (y/n)" and stop if denied.
+
 If a skill's judge run errors: record `ERR` and the error message for that skill; continue to the next skill. Do not abort the audit.
 
 ### Phase 3 — Render Report
