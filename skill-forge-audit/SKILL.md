@@ -54,6 +54,8 @@ If a skill's judge run errors: record `ERR` and the error message for that skill
 
 ### Phase 3 — Render Report
 
+Before rendering, ask: does every layout decision put highest-priority work at the top? If the Needs Work section is empty, lead with a one-sentence "All skills passing" summary instead of an empty header.
+
 Sort results by grade ascending: F → D → C → B → A. Worst grades appear first — the report is a priority queue, not an alphabetical list.
 
 Split skills into two groups:
