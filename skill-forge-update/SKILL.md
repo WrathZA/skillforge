@@ -57,7 +57,7 @@ State the recap to the user. Confirm:
 Does this match your understanding? (y)es / (n)o
 ```
 
-On `(n)`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again.
+On `(n)`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again. Use that answer to produce a third recap iteration; if it still doesn't match, stop and ask the user to draft the recap themselves before continuing.
 
 ---
 
@@ -174,6 +174,6 @@ Write the updated SKILL.md to the path it was read from.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
 
 - **NEVER proceed to Phase 3 if hitl applied zero changes**
-  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`.
+  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`. On `(r)`, re-enter Phase 1's elicitation loop with the existing change list pre-loaded as draft so the user can adjust rather than rebuild.
   **Why:** Judging an unchanged file produces the same grade as before and misleads the user into thinking changes were validated.
 
