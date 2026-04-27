@@ -151,7 +151,23 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
-Write the updated SKILL.md to the path it was read from.
+Write the updated SKILL.md to the path it was read from. Project-level skills (anywhere under the current repo, including `.claude/skills/<name>/` or a dedicated skills repo) are the default — they activate automatically once written and need no further install step.
+
+If — and only if — the source path lives under `~/.claude/skills/` (user-level install), verify the symlink resolves correctly. Project-level files require no symlink check.
+
+Print a one-block close-out:
+
+```
+## skill-forge-update — done
+
+**File:** [path] ([N] lines, pattern: [Tool/Process/...])
+**Scope:** project-level | user-level
+**Applied:** [count] / [total] proposed changes
+**Final grade:** [letter from Phase 3]
+**Next:** [reload session if user-level / nothing if project-level]
+```
+
+The close-out is the user's only confirmation that work landed; never end on hitl's board or a silent file write.
 
 ---
 
