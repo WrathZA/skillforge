@@ -1,9 +1,12 @@
 ---
 name: skill-forge-update
-description: "Update an existing SKILL.md: recap, detect description drift, (c)ontinue/(r)evise change elicitation, apply with skill-forge-hitl, validate with skill-forge-judge. Use when modifying, improving, or extending a skill. Triggers: update/modify/revise/change this skill, edit SKILL.md."
+description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate."
+when_to_use: "Triggers: update/modify/revise/change this skill, edit SKILL.md, improve a skill."
+argument-hint: "[skill-name or path]"
 ---
 
 # Skill Forge Update
+<!-- Pattern: Process (guided skill update workflow) -->
 
 Understand before touching. Confirm before applying. Judge what you've done.
 
@@ -11,11 +14,13 @@ Understand before touching. Confirm before applying. Judge what you've done.
 
 ## Phase 0 — Load & Recap
 
-**Skip condition**: If a `/skill-forge-recap` result for the same skill is already in the conversation context, verify the skill name matches, skip Phase 0 entirely, and proceed to Phase 1 using that recap.
+**Skip condition**: If a `/skill-forge-recap` result for the same skill is already in the conversation context, verify the skill name matches, skip Phase 0 entirely, and proceed to Phase 1 using that recap. Ensure the agentskills spec cache (`~/.claude/tmp/agentskills-spec-<today>.md`) is current before Phase 1 — frontmatter validation in Phase 1 requires up-to-date field lists.
 
 **MANDATORY** — Before reading the skill, fetch current platform docs in parallel:
 - **WebFetch `https://agentskills.io/specification`** — live frontmatter requirements and field constraints
 - **WebFetch `https://code.claude.com/docs/en/skills`** — Claude Code-specific features (new frontmatter fields, description char limits, invocation controls)
+
+If either fetch fails, proceed with spec knowledge already in context; note "spec/docs unavailable — using cached knowledge" in the drift check output.
 
 Note any constraints or features relevant to the skill being updated. These inform both the recap and the consistency checks in Phase 1.
 
@@ -94,7 +99,7 @@ After each response, produce:
 
 **Duplicate guidance**: New section covers the same ground as an existing one — flag and ask: "merge or replace?"
 
-**Principles violation**: NEVER missing WHY or INSTEAD. Request for generic advice ("write clean code", "be thorough"). Any rule that restates what Claude does by default.
+**Principles violation**: NEVER missing WHY or INSTEAD. Request for generic advice ("write clean code", "be thorough"). Any rule that restates what Claude does by default. Unknown frontmatter field added (valid Claude Code extensions: `when_to_use`, `argument-hint`, `disable-model-invocation`, `context`, `agent`, `model`, `effort`, `paths`, `hooks`, `shell`, `user-invocable`, `allowed-tools`).
 
 **Scope unclear**: "Make it shorter" without specifying what to cut; "improve it" without specifying how. Resolve to specific sections or criteria before adding to the list.
 
@@ -103,6 +108,8 @@ Loop does not advance on ambiguity. Every item in the confirmed list must be ind
 ---
 
 ## Phase 2 — Apply Changes
+
+If skill-forge-hitl is not installed, stop: "skill-forge-hitl is required — install it before running skill-forge-update."
 
 Invoke `/skill-forge-hitl` on the confirmed change list from Phase 1. Apply each item the user approves; skip declined items. When hitl outputs its final board, proceed immediately to Phase 3 — do not treat hitl's completion message as the end of the workflow. After hitl completes, show a concise diff summary:
 
@@ -128,6 +135,8 @@ If any change affects frontmatter fields, verify compliance against the spec and
 
 ## Phase 3 — Judge & HITL
 
+If skill-forge-judge is not installed, stop: "skill-forge-judge is required — install it before running skill-forge-update."
+
 Invoke `/skill-forge-judge` on the modified skill. Always invoke `/skill-forge-hitl` on the findings it produces. After skill-forge-hitl completes, proceed to Phase 4.
 
 If skill-forge-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
@@ -142,7 +151,7 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
-Write the file.
+Write the updated SKILL.md to the path it was read from.
 
 ---
 
@@ -163,4 +172,8 @@ Write the file.
 - **NEVER skip Phase 3 (skill-forge-judge) after applying changes**
   **Instead:** Always judge the modified skill before presenting for final approval.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
+
+- **NEVER proceed to Phase 3 if hitl applied zero changes**
+  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`.
+  **Why:** Judging an unchanged file produces the same grade as before and misleads the user into thinking changes were validated.
 
