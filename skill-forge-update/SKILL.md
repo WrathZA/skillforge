@@ -14,7 +14,7 @@ Understand before touching. Confirm before applying. Judge what you've done.
 
 ## Phase 0 — Load & Recap
 
-**Skip condition**: If a `/skill-forge-recap` result for the same skill is already in the conversation context, verify the skill name matches, skip Phase 0 entirely, and proceed to Phase 1 using that recap.
+**Skip condition**: If a `/skill-forge-recap` result for the same skill is already in the conversation context, verify the skill name matches, skip Phase 0 entirely, and proceed to Phase 1 using that recap. Ensure the agentskills spec cache (`~/.claude/tmp/agentskills-spec-<today>.md`) is current before Phase 1 — frontmatter validation in Phase 1 requires up-to-date field lists.
 
 **MANDATORY** — Before reading the skill, fetch current platform docs in parallel:
 - **WebFetch `https://agentskills.io/specification`** — live frontmatter requirements and field constraints
