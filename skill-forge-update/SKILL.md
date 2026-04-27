@@ -151,6 +151,8 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
+Write the updated SKILL.md to the path it was read from.
+
 ---
 
 ## NEVER
