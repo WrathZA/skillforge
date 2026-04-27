@@ -172,3 +172,7 @@ Write the file.
   **Instead:** Always judge the modified skill before presenting for final approval.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
 
+- **NEVER proceed to Phase 3 if hitl applied zero changes**
+  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`.
+  **Why:** Judging an unchanged file produces the same grade as before and misleads the user into thinking changes were validated.
+
