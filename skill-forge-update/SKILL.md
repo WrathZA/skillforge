@@ -201,3 +201,7 @@ The close-out is the user's only confirmation that work landed; never end on hit
   **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`. On `(r)`, re-enter Phase 1's elicitation loop with the existing change list pre-loaded as draft so the user can adjust rather than rebuild.
   **Why:** Judging an unchanged file produces the same grade as before and misleads the user into thinking changes were validated.
 
+- **NEVER apply Phase 2 changes outside skill-forge-hitl**
+  **Instead:** Always hand the confirmed change list to `/skill-forge-hitl` — never iterate edits inline, even for a single-item list.
+  **Why:** Per-item approval is the user's only veto point before the file is written; an inline apply loop removes that gate and turns Phase 1's confirmation into a blank cheque.
+
