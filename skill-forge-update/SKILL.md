@@ -139,6 +139,14 @@ If skill-forge-judge is not installed, stop: "skill-forge-judge is required — 
 
 Invoke `/skill-forge-judge` on the modified skill. Always invoke `/skill-forge-hitl` on the findings it produces. After skill-forge-hitl completes, proceed to Phase 4.
 
+If skill-forge-hitl applied zero findings (every item skipped or marked obsolete), do not silently advance — surface:
+
+```
+No judge findings applied — (a)ccept current grade / (r)evise scope / (q)uit without saving
+```
+
+On `(r)`, return to Phase 1 with the judge report's improvement list pre-loaded as draft. On `(a)`, proceed to Phase 4 with a note in the close-out that judge findings were reviewed but not applied.
+
 If skill-forge-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
 
 ```
