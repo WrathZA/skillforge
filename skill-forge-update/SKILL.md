@@ -6,6 +6,7 @@ argument-hint: "[skill-name or path]"
 ---
 
 # Skill Forge Update
+<!-- Pattern: Process (guided skill update workflow) -->
 
 Understand before touching. Confirm before applying. Judge what you've done.
 
