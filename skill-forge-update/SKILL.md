@@ -1,6 +1,6 @@
 ---
 name: skill-forge-update
-description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate."
+description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate. Use when an existing SKILL.md needs revision, modification, or improvement."
 when_to_use: "Triggers: update/modify/revise/change this skill, edit SKILL.md, improve a skill."
 argument-hint: "[skill-name or path]"
 ---
