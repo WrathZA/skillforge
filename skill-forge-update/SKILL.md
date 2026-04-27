@@ -98,7 +98,7 @@ After each response, produce:
 
 **Duplicate guidance**: New section covers the same ground as an existing one — flag and ask: "merge or replace?"
 
-**Principles violation**: NEVER missing WHY or INSTEAD. Request for generic advice ("write clean code", "be thorough"). Any rule that restates what Claude does by default.
+**Principles violation**: NEVER missing WHY or INSTEAD. Request for generic advice ("write clean code", "be thorough"). Any rule that restates what Claude does by default. Unknown frontmatter field added (valid Claude Code extensions: `when_to_use`, `argument-hint`, `disable-model-invocation`, `context`, `agent`, `model`, `effort`, `paths`, `hooks`, `shell`, `user-invocable`, `allowed-tools`).
 
 **Scope unclear**: "Make it shorter" without specifying what to cut; "improve it" without specifying how. Resolve to specific sections or criteria before adding to the list.
 
