@@ -19,6 +19,8 @@ Understand before touching. Confirm before applying. Judge what you've done.
 - **WebFetch `https://agentskills.io/specification`** — live frontmatter requirements and field constraints
 - **WebFetch `https://code.claude.com/docs/en/skills`** — Claude Code-specific features (new frontmatter fields, description char limits, invocation controls)
 
+If either fetch fails, proceed with spec knowledge already in context; note "spec/docs unavailable — using cached knowledge" in the drift check output.
+
 Note any constraints or features relevant to the skill being updated. These inform both the recap and the consistency checks in Phase 1.
 
 Identify the target skill. The user may name it, paste a path, or point to it in context.
