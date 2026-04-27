@@ -171,7 +171,7 @@ Print a one-block close-out:
 **File:** [path] ([N] lines, pattern: [Tool/Process/...])
 **Scope:** project-level | user-level
 **Applied:** [count] / [total] proposed changes
-**Final grade:** [letter from Phase 3]
+**Judge:** [grade] — [N applied / M reviewed-not-applied from Phase 3]
 **Next:** [reload session if user-level / nothing if project-level]
 ```
 
