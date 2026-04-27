@@ -150,8 +150,6 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
-Write the file.
-
 ---
 
 ## NEVER
