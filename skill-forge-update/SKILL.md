@@ -1,6 +1,7 @@
 ---
 name: skill-forge-update
-description: "Update an existing SKILL.md: recap, detect description drift, (c)ontinue/(r)evise change elicitation, apply with skill-forge-hitl, validate with skill-forge-judge. Use when modifying, improving, or extending a skill. Triggers: update/modify/revise/change this skill, edit SKILL.md."
+description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate."
+when_to_use: "Triggers: update/modify/revise/change this skill, edit SKILL.md, improve a skill."
 ---
 
 # Skill Forge Update
