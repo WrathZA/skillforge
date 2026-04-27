@@ -42,7 +42,7 @@ Read the skill completely. Produce a structured recap:
 **References:** [list references/ files, or "none"]
 ```
 
-**Drift check**: compare the frontmatter `description` field against the actual implementation. If they diverge (description omits key phases, misnames the trigger, or claims behaviour the skill doesn't exhibit), surface the discrepancy:
+**Drift check**: before flagging anything, ask: *would an agent reading only the description load this skill at the right moment, and would what loads match what the description promised?* That question — not symptom-matching — is the test. Then compare the frontmatter `description` field against the actual implementation. If they diverge (description omits key phases, misnames the trigger, or claims behaviour the skill doesn't exhibit), surface the discrepancy:
 
 ```
 Drift detected: [what the description says] vs [what the skill actually does]
