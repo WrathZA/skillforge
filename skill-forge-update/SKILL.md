@@ -1,6 +1,6 @@
 ---
 name: skill-forge-update
-description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate."
+description: "Guided update for an existing SKILL.md: structured recap, drift detection, change elicitation with conflict checking, per-item application with approval, and post-change quality gate. Use when an existing SKILL.md needs revision, modification, or improvement."
 when_to_use: "Triggers: update/modify/revise/change this skill, edit SKILL.md, improve a skill."
 argument-hint: "[skill-name or path]"
 ---
@@ -42,7 +42,7 @@ Read the skill completely. Produce a structured recap:
 **References:** [list references/ files, or "none"]
 ```
 
-**Drift check**: compare the frontmatter `description` field against the actual implementation. If they diverge (description omits key phases, misnames the trigger, or claims behaviour the skill doesn't exhibit), surface the discrepancy:
+**Drift check**: before flagging anything, ask: *would an agent reading only the description load this skill at the right moment, and would what loads match what the description promised?* That question — not symptom-matching — is the test. Then compare the frontmatter `description` field against the actual implementation. If they diverge (description omits key phases, misnames the trigger, or claims behaviour the skill doesn't exhibit), surface the discrepancy:
 
 ```
 Drift detected: [what the description says] vs [what the skill actually does]
@@ -57,7 +57,7 @@ State the recap to the user. Confirm:
 Does this match your understanding? (y)es / (n)o
 ```
 
-On `(n)`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again.
+On `(n)`: collect the correction, update the recap, confirm again before proceeding. After two corrections without agreement, ask directly: "What specifically is inaccurate?" rather than guessing again. Use that answer to produce a third recap iteration; if it still doesn't match, stop and ask the user to draft the recap themselves before continuing.
 
 ---
 
@@ -139,6 +139,14 @@ If skill-forge-judge is not installed, stop: "skill-forge-judge is required — 
 
 Invoke `/skill-forge-judge` on the modified skill. Always invoke `/skill-forge-hitl` on the findings it produces. After skill-forge-hitl completes, proceed to Phase 4.
 
+If skill-forge-hitl applied zero findings (every item skipped or marked obsolete), do not silently advance — surface:
+
+```
+No judge findings applied — (a)ccept current grade / (r)evise scope / (q)uit without saving
+```
+
+On `(r)`, return to Phase 1 with the judge report's improvement list pre-loaded as draft. On `(a)`, proceed to Phase 4 with a note in the close-out that judge findings were reviewed but not applied.
+
 If skill-forge-hitl stalls on an item (same rejection after 3 revisions), surface to the user:
 
 ```
@@ -151,7 +159,23 @@ Do not loop indefinitely.
 
 ## Phase 4 — Save & Activate
 
-Write the updated SKILL.md to the path it was read from.
+Write the updated SKILL.md to the path it was read from. Project-level skills (anywhere under the current repo, including `.claude/skills/<name>/` or a dedicated skills repo) are the default — they activate automatically once written and need no further install step.
+
+If — and only if — the source path lives under `~/.claude/skills/` (user-level install), verify the symlink resolves correctly. Project-level files require no symlink check.
+
+Print a one-block close-out:
+
+```
+## skill-forge-update — done
+
+**File:** [path] ([N] lines, pattern: [Tool/Process/...])
+**Scope:** project-level | user-level
+**Applied:** [count] / [total] proposed changes
+**Judge:** [grade] — [N applied / M reviewed-not-applied from Phase 3]
+**Next:** [reload session if user-level / nothing if project-level]
+```
+
+The close-out is the user's only confirmation that work landed; never end on hitl's board or a silent file write.
 
 ---
 
@@ -174,6 +198,10 @@ Write the updated SKILL.md to the path it was read from.
   **Why:** A change that looks correct can silently drop the skill below grade; catching this before install is far cheaper than fixing it post-install.
 
 - **NEVER proceed to Phase 3 if hitl applied zero changes**
-  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`.
+  **Instead:** Show the final HITL board and offer `(r)evise change list / (q)uit without saving`. On `(r)`, re-enter Phase 1's elicitation loop with the existing change list pre-loaded as draft so the user can adjust rather than rebuild.
   **Why:** Judging an unchanged file produces the same grade as before and misleads the user into thinking changes were validated.
+
+- **NEVER apply Phase 2 changes outside skill-forge-hitl**
+  **Instead:** Always hand the confirmed change list to `/skill-forge-hitl` — never iterate edits inline, even for a single-item list.
+  **Why:** Per-item approval is the user's only veto point before the file is written; an inline apply loop removes that gate and turns Phase 1's confirmation into a blank cheque.
 
