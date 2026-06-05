@@ -9,44 +9,11 @@
   },
   "plugins": [
     {
-      "name": "skill-forge-judge",
-      "description": "Evaluate any LLM prompt (SKILL.md, CLAUDE.md, system prompts) for quality with grouped dimensional scoring, letter grades, and actionable findings.",
+      "name": "skillforge",
+      "description": "Quality-gated skill authoring: create, recap, update, judge, and step-through-apply skills with HITL and an audit/feedback layer.",
       "category": "development",
-      "source": "./skill-forge-judge",
-      "homepage": "https://github.com/WrathZA/skillforge",
-      "skills": ["./"]
-    },
-    {
-      "name": "skill-forge-hitl",
-      "description": "Apply a numbered list one item at a time with status board, per-item approve/skip, approve-all mode, and commits after each approved item.",
-      "category": "development",
-      "source": "./skill-forge-hitl",
-      "homepage": "https://github.com/WrathZA/skillforge",
-      "skills": ["./"]
-    },
-    {
-      "name": "skill-forge-create",
-      "description": "Create a new SKILL.md via discovery recap, pattern selection, spec fetch, knowledge delta discipline, and quality gate.",
-      "category": "development",
-      "source": "./skill-forge-create",
-      "homepage": "https://github.com/WrathZA/skillforge",
-      "skills": ["./"]
-    },
-    {
-      "name": "skill-forge-update",
-      "description": "Update an existing SKILL.md with recap, description drift detection, change elicitation, and quality validation.",
-      "category": "development",
-      "source": "./skill-forge-update",
-      "homepage": "https://github.com/WrathZA/skillforge",
-      "skills": ["./"]
-    },
-    {
-      "name": "skill-forge-recap",
-      "description": "Read a skill's body and report what it actually does vs. what the description claims: drift, undeclared behaviors, verdict.",
-      "category": "development",
-      "source": "./skill-forge-recap",
-      "homepage": "https://github.com/WrathZA/skillforge",
-      "skills": ["./"]
+      "source": "./",
+      "homepage": "https://github.com/WrathZA/skillforge"
     }
   ]
 }

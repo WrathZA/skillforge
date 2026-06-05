@@ -11,27 +11,23 @@ Skill Forge is four skills that run in sequence (recap, create or update, judge,
 
 ## Skills
 
-**[skill-forge-recap](skill-forge-recap/):** reads a skill's body independently of its description. Reports what the skill *actually* does, flags undeclared behaviors, and verdicts drift as aligned / minor / significant. Offers context-sensitive next steps: fix frontmatter via HITL, hand off to skill-forge-update, or run skill-forge-judge.
+**[skill-forge-recap](skills/skill-forge-recap/):** reads a skill's body independently of its description. Reports what the skill *actually* does, flags undeclared behaviors, and verdicts drift as aligned / minor / significant. Offers context-sensitive next steps: fix frontmatter via HITL, hand off to skill-forge-update, or run skill-forge-judge.
 
-**[skill-forge-create](skill-forge-create/):** builds a new skill from scratch: discovery recap to identify domain and failure modes, pattern selection, spec-fetching draft phase with knowledge-delta discipline enforced, then judge + HITL quality gate before install.
+**[skill-forge-create](skills/skill-forge-create/):** builds a new skill from scratch: discovery recap to identify domain and failure modes, pattern selection, spec-fetching draft phase with knowledge-delta discipline enforced, then judge + HITL quality gate before install.
 
-**[skill-forge-update](skill-forge-update/):** structured update workflow for existing skills: recap, drift check, change elicitation with consistency checks, applies via HITL, judges the result, then saves and activates.
+**[skill-forge-update](skills/skill-forge-update/):** structured update workflow for existing skills: recap, drift check, change elicitation with consistency checks, applies via HITL, judges the result, then saves and activates.
 
-**[skill-forge-judge](skill-forge-judge/):** evaluates any LLM-consumed prompt against a dimensional rubric (knowledge delta, anti-patterns, usability, spec compliance). Outputs a letter grade, per-dimension scores, and a numbered improvements list.
+**[skill-forge-judge](skills/skill-forge-judge/):** evaluates any LLM-consumed prompt against a dimensional rubric (knowledge delta, anti-patterns, usability, spec compliance). Outputs a letter grade, per-dimension scores, and a numbered improvements list.
 
-**[skill-forge-hitl](skill-forge-hitl/):** Human-in-the-Loop: steps through any numbered list one item at a time. Shows a status board upfront, applies each change, prompts approve/revise/skip, and commits after each approval.
+**[skill-forge-hitl](skills/skill-forge-hitl/):** Human-in-the-Loop: steps through any numbered list one item at a time. Shows a status board upfront, applies each change, prompts approve/revise/skip, and commits after each approval.
 
 ## Install
 
-These five skills work in concert. `create` and `update` call `judge` and `hitl` as part of the quality gate; `recap` feeds into `update`. Install all five to make the full forge cycle available:
+The skills ship as a single bundled plugin — `create` and `update` call `judge` and `hitl` as part of the quality gate, and `recap` feeds into `update`. One install gives you the full forge cycle:
 
 ```
 /plugin marketplace add WrathZA/skillforge
-/plugin install skill-forge-recap
-/plugin install skill-forge-create
-/plugin install skill-forge-update
-/plugin install skill-forge-judge
-/plugin install skill-forge-hitl
+/plugin install skillforge
 ```
 
 ## Principles
