@@ -10,6 +10,8 @@ Batch-run skill-forge-judge across every skill in the repo. One consolidated rep
 
 Requires `skill-forge-judge` to be installed.
 
+No `references/` — this skill is single-file by design; the whole workflow fits in the body, so the absent directory is intentional, not missing progressive disclosure.
+
 ---
 
 ## Workflow
