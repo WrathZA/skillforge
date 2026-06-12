@@ -16,15 +16,15 @@ Requires `skill-forge-judge` to be installed.
 
 ### Phase 1 — Discover
 
-Glob for all SKILL.md files under the project root:
+Glob for all SKILL.md files, run from the repo root. Skills live one level deep under `skills/`:
 
 ```
-pattern: */SKILL.md
+pattern: skills/*/SKILL.md
 ```
 
 Collect the directory name of each match — that's the skill name.
 
-To detect skipped directories: also Glob `*/` to list all top-level directories. Any directory in the `*/` result that is not in the `*/SKILL.md` result has no SKILL.md — list it in the Skipped section of the report with reason "No SKILL.md found".
+To detect skipped directories: also Glob `skills/*/` to list every skill directory. Any directory in the `skills/*/` result that is not in the `skills/*/SKILL.md` result has no SKILL.md — list it in the Skipped section of the report with reason "No SKILL.md found".
 
 If zero SKILL.md files found: output "No skills found in this repo." and stop.
 
