@@ -42,8 +42,8 @@ For each discovered skill, in order:
 
 Emit a one-line status per skill as each evaluation completes — do not wait until all are done:
 ```
-✓ skill-forge-create   B  (87/120, 73%)
-✓ skill-forge-hitl     C  (74/120, 62%)
+✓ skill-forge-create   B  (98/120, 82%)
+✓ skill-forge-hitl     C  (90/120, 75%)
 ```
 
 If `/skill-forge-judge` is not installed: output "skill-forge-judge is required — install it before running skill-forge-audit." and stop.
