@@ -62,6 +62,8 @@ Split skills into two groups:
 - **Needs Work**: grade below B (< 80%)
 - **Passing**: grade B or above (≥ 80%)
 
+For the `<YYYY-MM-DD>` report header, use the current date already present in the session context — do not shell out for it (`$(date)` and command substitution trigger a permission prompt under this repo's bash rules).
+
 Output a single markdown report:
 
 ````markdown
