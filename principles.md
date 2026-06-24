@@ -6,7 +6,9 @@ Rules that govern how this repo is maintained and how skills are built.
 
 ## Rules live in the repo
 
-Behavioral context — bash rules, conventions, patterns — belongs in tracked files in this repo, not in external memory systems. If something needs to be remembered across sessions, it goes in a `.md` file here and gets referenced from `CLAUDE.md`.
+Behavioral context — bash rules, conventions, patterns — belongs in tracked files in this repo. Anything that governs how this repo is maintained or how skills are built goes in a `.md` file here and gets referenced from `CLAUDE.md`.
+
+Session memory may hold facts about the user or cross-project preferences, but it is not authoritative for repo behavior: the moment a memory hardens into a rule *for this repo*, promote it to a tracked file. The repo is the source of truth for how skillforge is built; memory is a scratchpad that feeds it.
 
 ## Every rule needs a WHY and an INSTEAD
 
@@ -48,6 +50,6 @@ A skill is never finished — it can always be sharpened. The forge cycle (recap
 
 **INSTEAD:** Treat judging as a default close-out step, not a remediation step. The grade tells you whether the skill is still earning its tokens.
 
-## Todo lives in the repo
+## Work is tracked in GitHub Issues
 
-`todo.md` is the single source of truth for pending work. It will migrate to GitHub Issues when the volume justifies it. Do not track work in memory or conversation context only.
+GitHub Issues is the single source of truth for pending and completed work — one issue per outcome, landed via PR and closed on merge. Do not track work in conversation context or session memory only.
