@@ -1,6 +1,6 @@
 ---
 name: skill-forge-feedback
-description: Collect user feedback (bugs, friction, feature requests) about skill-forge skills via a short interview, then file a structured GitHub issue. Use after any skill-forge workflow when something felt wrong, slow, or missing. Triggers: "file feedback", "report a bug", "something felt off", "I have a feature request", "friction".
+description: "Collect user feedback (bugs, friction, feature requests) about skill-forge skills via a short interview, then file a structured GitHub issue. Use after any skill-forge workflow when something felt wrong, slow, or missing. Triggers: 'file feedback', 'report a bug', 'something felt off', 'I have a feature request', 'friction'."
 compatibility: Direct filing requires gh CLI (authenticated) or GitHub MCP server; falls back to a pre-filled GitHub URL that any logged-in GitHub user can submit.
 ---
 
@@ -15,7 +15,7 @@ Open with a single-key prompt:
 > What brought you here?
 > **(b)ug** — something broke &nbsp; **(f)riction** — something was slow or confusing &nbsp; **(r)equest** — something is missing &nbsp; **(o)ther**
 
-After the user picks a type, ask targeted follow-ups one at a time:
+After the user picks a type, ask targeted follow-ups one at a trytime:
 
 | Type | Key questions |
 |------|--------------|
