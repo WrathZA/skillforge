@@ -10,21 +10,23 @@ Batch-run skill-forge-judge across every skill in the repo. One consolidated rep
 
 Requires `skill-forge-judge` to be installed.
 
+No `references/` — this skill is single-file by design; the whole workflow fits in the body, so the absent directory is intentional, not missing progressive disclosure.
+
 ---
 
 ## Workflow
 
 ### Phase 1 — Discover
 
-Glob for all SKILL.md files under the project root:
+Glob for all SKILL.md files, run from the repo root. Skills live one level deep under `skills/`:
 
 ```
-pattern: */SKILL.md
+pattern: skills/*/SKILL.md
 ```
 
 Collect the directory name of each match — that's the skill name.
 
-To detect skipped directories: also Glob `*/` to list all top-level directories. Any directory in the `*/` result that is not in the `*/SKILL.md` result has no SKILL.md — list it in the Skipped section of the report with reason "No SKILL.md found".
+To detect skipped directories: also Glob `skills/*/` to list every skill directory. Any directory in the `skills/*/` result that is not in the `skills/*/SKILL.md` result has no SKILL.md — list it in the Skipped section of the report with reason "No SKILL.md found".
 
 If zero SKILL.md files found: output "No skills found in this repo." and stop.
 
@@ -42,8 +44,8 @@ For each discovered skill, in order:
 
 Emit a one-line status per skill as each evaluation completes — do not wait until all are done:
 ```
-✓ skill-forge-create   B  (87/120, 73%)
-✓ skill-forge-hitl     C  (74/120, 62%)
+✓ skill-forge-create   B  (98/120, 82%)
+✓ skill-forge-hitl     C  (90/120, 75%)
 ```
 
 If `/skill-forge-judge` is not installed: output "skill-forge-judge is required — install it before running skill-forge-audit." and stop.
@@ -61,6 +63,8 @@ Sort results by grade ascending: F → D → C → B → A. Worst grades appear 
 Split skills into two groups:
 - **Needs Work**: grade below B (< 80%)
 - **Passing**: grade B or above (≥ 80%)
+
+For the `<YYYY-MM-DD>` report header, use the current date already present in the session context — do not shell out for it (`$(date)` and command substitution trigger a permission prompt under this repo's bash rules).
 
 Output a single markdown report:
 
